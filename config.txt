@@ -1,0 +1,7 @@
+maxIteration=10000
+pm=0.1
+pc=0.2
+pmt=0.5
+pmr=0.5
+minStartTime=8
+maxEndTime=20

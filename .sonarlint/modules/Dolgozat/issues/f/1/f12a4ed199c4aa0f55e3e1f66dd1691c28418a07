@@ -1,0 +1,79 @@
+
+”squid:S2293õ"YReplace the type specification in this constructor call with the diamond operator ("<>").(®Á¡ùÿÿÿÿ8¢ø±²æ-HÆ‡RMINORZ
+CODE_SMELL
+”squid:S2293¥"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÄîË±øÿÿÿÿ8Àã¹±æ-HÇ‡RMINORZ
+CODE_SMELL
+ssquid:S1197í"8Move the array designator from the variable to the type.(¨Š×‡úÿÿÿÿ8Ã‘ñé-HÈ‡RMINORZ
+CODE_SMELL
+r
+squid:S1066"9Replace this use of System.out or System.err by a logger.(¡£Åùÿÿÿÿ8€õüƒæ-HÉ‡RMAJORZ
+CODE_SMELL
+“squid:S2293o"YReplace the type specification in this constructor call with the diamond operator ("<>").(®Á¡ùÿÿÿÿ8²¡æ²æ-HÊ‡RMINORZ
+CODE_SMELL
+n
+squid:S106³"9Replace this use of System.out or System.err by a logger.(Ÿí¶ì8¦Š¯øê-HË‡RMAJORZ
+CODE_SMELL
+s
+squid:S106ó"9Replace this use of System.out or System.err by a logger.(ØÄïşÿÿÿÿ8óù±éé-HÌ‡RMAJORZ
+CODE_SMELL
+ squid:S1488­"eImmediately return this expression instead of assigning it to the temporary variable "numberOfRooms".(ÆŠË’ùÿÿÿÿ8Œë¯äì-HÍ‡RMINORZ
+CODE_SMELL
+squid:S2293E"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğá¦ï8æôÙ¤å-HÎ‡RMINORZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.HÏ‡RMINORZ
+CODE_SMELL
+|squid:CallToDeprecatedMethod‘"0Remove this use of "getHours"; it is deprecated.(¨±µÊúÿÿÿÿ8‰—Ş©å-HĞ‡RMINORZ
+CODE_SMELL
+asquid:S1905Ã"+Remove this unnecessary cast to "Document".(ïœÚã8¥Ï•ì-HÑ‡RMINORZ
+CODE_SMELL
+squid:S1854Y"ERemove this useless assignment to local variable "mutatedChromosome".(®Á¡ùÿÿÿÿ8…Õ°²æ-HÒ‡RMAJORZ
+CODE_SMELL
+n
+squid:S106µ"9Replace this use of System.out or System.err by a logger.(ì×‚§8×ñĞ•ì-HÓ‡RMAJORZ
+CODE_SMELL
+{squid:CallToDeprecatedMethodŠ"/Remove this use of "getDate"; it is deprecated.(šÂ†¾üÿÿÿÿ8ïêÖ¤å-HÔ‡RMINORZ
+CODE_SMELL
+“squid:S2293r"YReplace the type specification in this constructor call with the diamond operator ("<>").(äœ®öÿÿÿÿÿ8ĞÍœªå-HÕ‡RMINORZ
+CODE_SMELL
+squid:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(ßö¨8òıà°æ-HÖ‡RMINORZ
+CODE_SMELL
+squid:S2293q"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğá¦ï8Éó²æ-H×‡RMINORZ
+CODE_SMELL
+squid:S2293W"YReplace the type specification in this constructor call with the diamond operator ("<>").(óáê…8ÉÃ¦ñé-HØ‡RMINORZ
+CODE_SMELL
+s
+squid:S106Ã"9Replace this use of System.out or System.err by a logger.(ÃÜ¤îúÿÿÿÿ8¯¹Âñé-HÙ‡RMAJORZ
+CODE_SMELL
+Ì%squid:RedundantThrowsDeclarationCheckí"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(¨Š×‡úÿÿÿÿ8›çíòê-HÚ‡RMINORZ
+CODE_SMELL
+squid:S3776k"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(µ™Û«úÿÿÿÿ8ÖÈ¦å-HÛ‡RCRITICALZ
+CODE_SMELL
+_squid:S1125ğ")Remove the literal "false" boolean value.(ù­¹ç8ÿëéïé-HÜ‡RMINORZ
+CODE_SMELL
+“squid:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(®Á¡ùÿÿÿÿ8¸ Š³æ-Hİ‡RMINORZ
+CODE_SMELL
+”squid:S2293¶"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚şƒ—şÿÿÿÿ8Ù×±­å-HŞ‡RMINORZ
+CODE_SMELL
+s
+squid:S106Æ"9Replace this use of System.out or System.err by a logger.(ÁèŸÈùÿÿÿÿ8èªî¡ê-Hß‡RMAJORZ
+CODE_SMELL
+asquid:S1905Ğ"+Remove this unnecessary cast to "Document".(óøÇ÷8¥Ï•ì-Hà‡RMINORZ
+CODE_SMELL
+zsquid:CallToDeprecatedMethody"/Remove this use of "getDate"; it is deprecated.(š¼şõıÿÿÿÿ8˜ü¨©å-Há‡RMINORZ
+CODE_SMELL
+“squid:S2293F"YReplace the type specification in this constructor call with the diamond operator ("<>").(äœ®öÿÿÿÿÿ8æôÙ¤å-Hâ‡RMINORZ
+CODE_SMELL
+squid:S2293ù"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğá¦ï8®©³æ-Hã‡RMINORZ
+CODE_SMELL
+”squid:S2293³"YReplace the type specification in this constructor call with the diamond operator ("<>").(ú†Ìæûÿÿÿÿ8¸™ƒ´æ-Hä‡RMINORZ
+CODE_SMELL
+zsquid:CallToDeprecatedMethody"/Remove this use of "getDate"; it is deprecated.(š¼şõıÿÿÿÿ8ïêÖ¤å-Hå‡RMINORZ
+CODE_SMELL
+ysquid:UnusedPrivateMethod¤"5Remove this unused private "getNewPopulation" method.(­Á‹³8ÉÃ¦ñé-Hæ‡RMAJORZ
+CODE_SMELL
+esquid:S1905g"+Remove this unnecessary cast to "Document".(›ÅŸÿÿÿÿÿ8¥Ï•ì-Hç‡RMINORZ
+CODE_SMELL
+{squid:CallToDeprecatedMethodŠ"/Remove this use of "getDate"; it is deprecated.(šÂ†¾üÿÿÿÿ8˜ü¨©å-Hè‡RMINORZ
+CODE_SMELL
+|squid:CallToDeprecatedMethod"0Remove this use of "getHours"; it is deprecated.(•ÒÃ“ûÿÿÿÿ8‰—Ş©å-Hé‡RMINORZ
+CODE_SMELL
