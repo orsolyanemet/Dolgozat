@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -18,12 +19,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class GeneticAlgorithm {
 
-	private static ArrayList<ArrayList<ArrayList<Object>>> population;
-
-	private static int[] fitnessOfChromosomes;
-
 	private static MongoCollection<Document> collection;
-
 	private static MongoClient connection;
 
 	private static int maxIteration;
@@ -36,7 +32,15 @@ public class GeneticAlgorithm {
 	private static int populationSize;
 	private static int nrOfAddedProperties;
 
-	private static void getPropertyValues() throws IOException {
+	private static ArrayList<ArrayList<Object>> requests;
+	private static ArrayList<ArrayList<Object>> rooms;
+	private static ArrayList<ArrayList<Object>> roomTypes;
+
+	private static ArrayList<ArrayList<ArrayList<Object>>> population;
+	private static ArrayList<ArrayList<Object>> initialChromosome;
+	private static int[] fitnessOfChromosomes;
+
+	private static void getParameters() throws IOException {
 		// Beolvassa a parametereket a config.txt filebol
 		try (InputStream input = new FileInputStream("resources/config")) {
 			Properties properties = new Properties();
@@ -55,28 +59,77 @@ public class GeneticAlgorithm {
 		}
 	}
 
-	private static ArrayList<ArrayList<Object>> readChromosomeFromDB() {
+	private static void getRequestsFromDB() {
 		/*
-		 * Beolvassa a kromoszomat az adatbazisbol. A kromoszoma reprezentacioja egy
-		 * tomb lesz, mely tartalmazza: - reservationId - time tombot (fromTime,toTime)
-		 * - roomId
+		 * Beolvassa a kereseket az adatbazisbol. Request:[id1,(fromtime1,totime1),
+		 * idRoom1, duration1]
 		 */
-		ArrayList<ArrayList<Object>> chromosome = new ArrayList<ArrayList<Object>>();
+		requests = new ArrayList<ArrayList<Object>>();
 		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
 		collection = MongoConnectionManager.getCollection(db, "Reservation");
-		List<Document> reservations = (List<Document>) collection.find().into(new ArrayList<Document>());
-		for (Document reservation : reservations) {
-			ArrayList<Object> gene = new ArrayList<Object>();
+		List<Document> requestsFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
+		for (Document request : requestsFromDB) {
+			ArrayList<Object> properties = new ArrayList<Object>();
 			ArrayList<Date> time = new ArrayList<Date>();
-			List<Date> timesFromDB = (List<Date>) reservation.get("time");
+			List<Date> timesFromDB = (List<Date>) request.get("time");
 			time.add(0, timesFromDB.get(0));
 			time.add(1, timesFromDB.get(1));
-			gene.add(0, reservation.getObjectId("_id"));
-			gene.add(1, time);
-			gene.add(2, reservation.getObjectId("idRoom"));
-			chromosome.add(gene);
+			properties.add(0, request.getObjectId("_id"));
+			properties.add(1, time);
+			properties.add(2, request.getObjectId("idRoom"));
+			properties.add(3, request.getInteger("duration"));
+			requests.add(properties);
 		}
-		return chromosome;
+	}
+
+	private static void getRoomsFromDB() {
+		/*
+		 * Beolvassa a kereseket az adatbazisbol. Room:[id1,[property1, property2,...]]
+		 */
+		rooms = new ArrayList<ArrayList<Object>>();
+		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
+		collection = MongoConnectionManager.getCollection(db, "Room");
+		List<Document> roomsFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
+		for (Document room : roomsFromDB) {
+			ArrayList<Object> properties = new ArrayList<Object>();
+			properties.add(0, room.getObjectId("_id"));
+			List<ObjectId> roomPropertiesFromDB = (List<ObjectId>) room.get("roomTypeList");
+			properties.add(1, roomPropertiesFromDB);
+			rooms.add(properties);
+		}
+	}
+
+	private static void getRoomTypes() {
+		/*
+		 * Beolvassa a kereseket az adatbazisbol.
+		 * RoomProperty:[idProperty1,[equivalent]]
+		 */
+		roomTypes = new ArrayList<ArrayList<Object>>();
+		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
+		collection = MongoConnectionManager.getCollection(db, "RoomType");
+		List<Document> roomTypesFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
+		for (Document roomType : roomTypesFromDB) {
+			ArrayList<Object> properties = new ArrayList<Object>();
+			properties.add(0, roomType.getObjectId("_id"));
+			List<ObjectId> equivalentPropertiesFromDB = (List<ObjectId>) roomType.get("equivalentTo");
+			properties.add(1, equivalentPropertiesFromDB);
+			roomTypes.add(properties);
+		}
+	}
+
+	private static void readDataFromDB() {
+		connection = MongoConnectionManager.getConnection();
+		getRequestsFromDB();
+		getRoomsFromDB();
+		getRoomTypes();
+		connection.close();
+	}
+
+	private static void getInitialChromosome() {
+		initialChromosome=new ArrayList<ArrayList<Object>>();
+		for (int i = 0; i < requests.size(); i++) {
+			//timeMutation for all requests
+		}
 	}
 
 	private static void getInitialPopulation() {
@@ -85,7 +138,6 @@ public class GeneticAlgorithm {
 		 * megkapja a kezdeti populaciot
 		 */
 		population = new ArrayList<ArrayList<ArrayList<Object>>>();
-		ArrayList<ArrayList<Object>> initialChromosome = readChromosomeFromDB();
 		ArrayList<ArrayList<Object>> mutatedChromosome = new ArrayList<ArrayList<Object>>();
 		for (int i = 0; i < populationSize; i++) {
 			mutatedChromosome = timeMutation(initialChromosome);
@@ -94,16 +146,7 @@ public class GeneticAlgorithm {
 		}
 	}
 
-	private static int findDuration(ArrayList<ArrayList<Object>> chromosome, int chromosomeId) {
-		// Megkeresi egy gennek az id-ja utan a duration parameterjet
-		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
-		collection = MongoConnectionManager.getCollection(db, "Reservation");
-		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("_id", chromosome.get(chromosomeId).get(0));
-		Document reservation = (Document) collection.find(whereQuery).first();
-		return reservation.getInteger("duration");
-	}
-
+	//TO-DO
 	private static ArrayList<ArrayList<Object>> timeMutation(ArrayList<ArrayList<Object>> chromosome) {
 		/*
 		 * Elvegezi egy adott kromoszoman az ido szerinti mutaciot
@@ -117,7 +160,7 @@ public class GeneticAlgorithm {
 				List<Date> times = (List<Date>) chromosome.get(i).get(1);
 				Date fromTime = times.get(0);
 				Date toTime = times.get(1);
-				int duration = findDuration(chromosome, i);
+				int duration = (int) requests.get(i).get(3);
 				if ((fromTime.getDate() == toTime.getDate()
 						&& toTime.getTime() - fromTime.getTime() > duration * 3600 * 1000)) {
 					/*
@@ -165,65 +208,71 @@ public class GeneticAlgorithm {
 		}
 		return mutatedChromosome;
 	}
-
-	private static int countRooms() {
-		// Megadja, hogy hany szoba all rendelkezesunkre
-		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
-		collection = MongoConnectionManager.getCollection(db, "Room");
-		int numberOfRooms = (int) collection.countDocuments();
-		return numberOfRooms;
-	}
-
-	private static ArrayList<ObjectId> findRoomIds() {
-		// Megadja a szobak id-jat
-		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
-		collection = MongoConnectionManager.getCollection(db, "Room");
-		List<Document> rooms = (List<Document>) collection.find().into(new ArrayList<Document>());
-		ArrayList<ObjectId> roomIds = new ArrayList<ObjectId>();
-		for (int i = 0; i < rooms.size(); i++) {
-			roomIds.add(i, rooms.get(i).getObjectId("_id"));
-		}
-		return roomIds;
-	}
-
-	private static ArrayList<ObjectId> getRoomProperties(ObjectId roomId, boolean checkEquivalentTo) {
-		// Egy bizonyos szobanak a tulajdonsagait teriti vissza
-		MongoDatabase db = MongoConnectionManager.getDatabase(connection);
-		collection = MongoConnectionManager.getCollection(db, "Room");
-		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("_id", roomId);
-		Document room = (Document) collection.find(whereQuery).first();
-		List<ObjectId> propertiesFromDB = (List<ObjectId>) room.get("roomTypeList");
-		ArrayList<ObjectId> properties = new ArrayList<>();
-		for (int i = 0; i < propertiesFromDB.size(); i++) {
-			properties.add(propertiesFromDB.get(i));
-		}
-		if (checkEquivalentTo) {
-			nrOfAddedProperties = 0;
-			db = MongoConnectionManager.getDatabase(connection);
-			collection = MongoConnectionManager.getCollection(db, "RoomType");
-			for (int i = 0; i < propertiesFromDB.size(); i++) {
-				whereQuery = new BasicDBObject();
-				whereQuery.put("_id", propertiesFromDB.get(i));
-				Document roomType = (Document) collection.find(whereQuery).first();
-				if (roomType.get("equivalentTo") != null) {
-					List<ObjectId> equivalentToFromDB = (List<ObjectId>) roomType.get("equivalentTo");
-					for (int j = 0; j < equivalentToFromDB.size(); j++) {
-						properties.add(equivalentToFromDB.get(j));
-						nrOfAddedProperties++;
-					}
-				}
+	
+	private static int getRoomIndex(ObjectId roomId) {
+		boolean found = false;
+		int i = 0;
+		while (!found && i < rooms.size()) {
+			if (roomId.equals(rooms.get(i).get(0))) {
+				found=true;
+				return i;
 			}
+			i++;
 		}
-		return properties;
+		return -1;
+	}
+	
+	private static int getRoomTypeIndex(ObjectId roomTypeId) {
+		boolean found = false;
+		int i = 0;
+		while (!found && i < roomTypes.size()) {
+			if (roomTypeId.equals(roomTypes.get(i).get(0))) {
+				found=true;
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
+	private static List<ObjectId> addEquivalentRoomProperties(ObjectId roomId) {
+		int i= getRoomIndex(roomId);
+		//Lekerem a tulajdonsagait
+		List<ObjectId> roomProperties = new ArrayList<ObjectId>();
+	    List<ObjectId> properties = (List<ObjectId>) rooms.get(i).get(1);
+	    for(i=0;i<properties.size();i++) {
+	    	roomProperties.add(properties.get(i));
+	    }
+	    nrOfAddedProperties = 0;
+	    int n=roomProperties.size();
+	    //Vegigmegyek a tulajdonsagokon
+		for (i = 0; i < n; i++) {
+			//Megnezem, hogy van-e ekvivalense.
+			int j=getRoomTypeIndex(roomProperties.get(i));
+			if(roomTypes.get(j).get(1)!=null) {
+				List<ObjectId> equivalents=(List<ObjectId>)roomTypes.get(j).get(1);
+				for(int g=0;g<equivalents.size();g++) {
+					roomProperties.add(equivalents.get(g));
+					nrOfAddedProperties++;
+				}
+			}	
+		}
+		return roomProperties;
 	}
 
 	private static boolean isEquivalentRoom(ObjectId actualRoomId, ObjectId newRoomId) {
 		// Meghatarozza, hogya ket parameterkent megadott szoba ekvivelens-e
-		ArrayList<ObjectId> actualRoomProperties = getRoomProperties(actualRoomId, true);
-		ArrayList<ObjectId> newRoomProperties = getRoomProperties(newRoomId, false);
+		// Lekerem a ket szoba tulajdonsagait
+		List<ObjectId> actualRoomProperties = new ArrayList<ObjectId>();
+		List<ObjectId> equivalentProperties = addEquivalentRoomProperties(actualRoomId);;
+		for(int i=0;i<equivalentProperties.size();i++) {
+	    	actualRoomProperties.add(equivalentProperties.get(i));
+	    }
+		int i= getRoomIndex(newRoomId);
+	    List<ObjectId> newRoomProperties = (List<ObjectId>) rooms.get(i).get(1);
 		int nrOfFoundProperties = 0;
-		for (int i = 0; i < actualRoomProperties.size(); i++) {
+		// Megkeresi, hogy hany kozos tulajdonsaga van a ket szobanak
+		for (i = 0; i < actualRoomProperties.size(); i++) {
 			int j = 0;
 			boolean found = false;
 			while (j < newRoomProperties.size() && !found) {
@@ -243,17 +292,21 @@ public class GeneticAlgorithm {
 		 * Elvegezi egy adott kromoszoman a szoba szerinti mutaciot
 		 */
 		ArrayList<ArrayList<Object>> mutatedChromosome = new ArrayList<ArrayList<Object>>();
-		int nrOfRooms = countRooms();
-		ArrayList<ObjectId> roomIds = findRoomIds();
+		// Vegigmegyek a kromoszoma genjein
 		for (int i = 0; i < chromosome.size(); i++) {
+			// Eldontom, hogy mutalom-e
 			ArrayList<Object> gene = new ArrayList<Object>();
 			double toMutate = Math.random();
 			if (toMutate > pmr) {
+				// Amig nem talalok olyan szobat, amivel mutalom
 				boolean found = false;
 				while (!found) {
+					// Generalok egy random szamot 0 es a szoba db szam kozott
 					Random r = new Random();
-					ObjectId newRoomId = roomIds.get(r.nextInt((nrOfRooms)));
+					ObjectId newRoomId = (ObjectId) rooms.get(r.nextInt((rooms.size()))).get(0);
+					// Lekerem az aktualis szoba id-t
 					ObjectId actualRoomId = (ObjectId) chromosome.get(i).get(2);
+					// Ha nem ugyanaz a szoba es az uj szoba a regivel ekvivalens akkor mutalok
 					if (!actualRoomId.equals(newRoomId) && isEquivalentRoom(actualRoomId, newRoomId)) {
 						found = true;
 						gene.add(0, chromosome.get(i).get(0));
@@ -321,53 +374,57 @@ public class GeneticAlgorithm {
 		return crossoverPopulation;
 	}
 
-	private static int partition(ArrayList<ArrayList<Object>> chromosome, int low, int high) {
-		List<Date> times = (List<Date>) chromosome.get(high).get(1);
+	private static int partition(ArrayList<ArrayList<Object>> chromosomeToSort, int low, int high) {
+		List<Date> times = (List<Date>) chromosomeToSort.get(high).get(1);
 		Date pivotTime = times.get(0);
 		int i = (low - 1);
 		for (int j = low; j < high; j++) {
 			// If current element is before pivotTime
-			List<Date> currentTimes = (List<Date>) chromosome.get(j).get(1);
+			List<Date> currentTimes = (List<Date>) chromosomeToSort.get(j).get(1);
 			Date currentFromTime = currentTimes.get(0);
 			if (currentFromTime.before(pivotTime)) {
 				i++;
-				ArrayList<Object> temp = chromosome.get(i);
-				chromosome.set(i, chromosome.get(j));
-				chromosome.set(j, temp);
+				ArrayList<Object> temp = chromosomeToSort.get(i);
+				chromosomeToSort.set(i, chromosomeToSort.get(j));
+				chromosomeToSort.set(j, temp);
 			}
 		}
-		ArrayList<Object> temp = chromosome.get(i + 1);
-		chromosome.set(i + 1, chromosome.get(high));
-		chromosome.set(high, temp);
+		ArrayList<Object> temp = chromosomeToSort.get(i + 1);
+		chromosomeToSort.set(i + 1, chromosomeToSort.get(high));
+		chromosomeToSort.set(high, temp);
 		return i + 1;
 	}
 
-	private static void quickSortGenesByTime(ArrayList<ArrayList<Object>> chromosome, int low, int high) {
+	private static void quickSortGenesByTime(ArrayList<ArrayList<Object>> chromosomeToSort, int low, int high) {
 		// Rendezi a kromoszomaban szereplo geneket kezdesi ido szerint
 		if (low < high) {
-			int partitioningIndex = partition(chromosome, low, high);
-			quickSortGenesByTime(chromosome, low, partitioningIndex - 1);
-			quickSortGenesByTime(chromosome, partitioningIndex + 1, high);
+			int partitioningIndex = partition(chromosomeToSort, low, high);
+			quickSortGenesByTime(chromosomeToSort, low, partitioningIndex - 1);
+			quickSortGenesByTime(chromosomeToSort, partitioningIndex + 1, high);
 		}
 	}
 
 	private static int countCollisions(ArrayList<ArrayList<Object>> chromosome) {
 		// Egy kromoszomaban szereplo utkozesek szamat adja meg
-		quickSortGenesByTime(chromosome, 0, chromosome.size() - 1);
-		boolean[] isChecked = new boolean[chromosome.size()];
+		ArrayList<ArrayList<Object>> chromosomeToSort = new ArrayList<ArrayList<Object>>();
 		for (int i = 0; i < chromosome.size(); i++) {
+			chromosomeToSort.add(chromosome.get(i));
+		}
+		quickSortGenesByTime(chromosomeToSort, 0, chromosomeToSort.size() - 1);
+		boolean[] isChecked = new boolean[chromosomeToSort.size()];
+		for (int i = 0; i < chromosomeToSort.size(); i++) {
 			isChecked[i] = false;
 		}
 		int i = 0;
 		int collisions = 0;
-		while (i < chromosome.size()) {
+		while (i < chromosomeToSort.size()) {
 			isChecked[i] = true;
-			List<Date> times1 = (List<Date>) chromosome.get(i).get(1);
+			List<Date> times1 = (List<Date>) chromosomeToSort.get(i).get(1);
 			Date toTime = times1.get(1);
-			for (int j = i + 1; j < chromosome.size(); j++) {
-				if (chromosome.get(i).get(2).equals(chromosome.get(j).get(2)) && isChecked[j] == false) {
+			for (int j = i + 1; j < chromosomeToSort.size(); j++) {
+				if (chromosomeToSort.get(i).get(2).equals(chromosomeToSort.get(j).get(2)) && isChecked[j] == false) {
 					isChecked[j] = true;
-					List<Date> times2 = (List<Date>) chromosome.get(j).get(1);
+					List<Date> times2 = (List<Date>) chromosomeToSort.get(j).get(1);
 					Date fromTime = times2.get(0);
 					if (toTime.before(fromTime) || toTime.getTime() == fromTime.getTime()) {
 						toTime = times2.get(1);
@@ -448,7 +505,8 @@ public class GeneticAlgorithm {
 				fitnessValueIndex = i;
 			}
 		}
-		System.out.println("Az eddigi legfittebb kromoszoma: utkozesek:" + fitnessValue);
+		System.out.println("Az eddigi legfittebb kromoszoma:");
+		System.out.println("Utkozesek:" + fitnessValue);
 		int chromosomeSize = population.get(0).size();
 		for (int i = 0; i < chromosomeSize; i++) {
 			System.out.println(population.get(fitnessValueIndex).get(i));
@@ -456,16 +514,13 @@ public class GeneticAlgorithm {
 	}
 
 	private static void geneticAlgorithm() {
-		// Populacio inicializalasa
-		connection = MongoConnectionManager.getConnection();
 		getInitialPopulation();
 		// A kezdeti populacio tartalmazza-e a legjobb/legfittebb egyedet
 		int i = 0;
 		boolean found = false;
 		int iter = 0;
 		found = false;
-		while (iter < maxIteration && !found) {
-			// Fitnessz fuggveny kiertekelese a populaciora
+		while (iter < maxIteration && !found) { // Fitness fuggveny kiertekelese a populaciora
 			fitnessCalculation();
 			while (i < populationSize && !found) {
 				if (isTheFittestChromosome(population.get(i))) {
@@ -474,12 +529,9 @@ public class GeneticAlgorithm {
 				}
 				i++;
 			}
-			if (!found) {
-				// Szelecioval uj populacio
-				selection();
-				// Keresztezem a kivalasztott kromoszomakat
-				population = crossover(population);
-				// Mutalom(szoba es ido szerint) a kivalasztott kromoszomakat
+			if (!found) { // Szelecioval uj populacio
+				// selection(); // Keresztezem a kivalasztott kromoszomakat population =
+				crossover(population); // Mutalom(szoba es ido szerint) a kivalasztott kromoszomakat
 				population = mutation(population);
 			}
 			iter++;
@@ -487,13 +539,32 @@ public class GeneticAlgorithm {
 		if (!found) {
 			foundFitChromosome();
 		}
-		connection.close();
+	}
+
+	private static void printChromosome(ArrayList<ArrayList<Object>> chromosome) {
+		for (int j = 0; j < chromosome.size(); j++) {
+			System.out.println(chromosome.get(j));
+		}
+		System.out.println();
+	}
+
+	private static void printPopulation(ArrayList<ArrayList<ArrayList<Object>>> population) {
+		for (int i = 0; i < population.size(); i++) {
+			for (int j = 0; j < population.get(i).size(); j++) {
+				System.out.println(population.get(i).get(j));
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 	public static void main(String args[]) throws IOException, InterruptedException {
 		long startTime = System.currentTimeMillis();
-		getPropertyValues();
-		geneticAlgorithm();
+		getParameters();
+		readDataFromDB();
+		getInitialPopulation();
+		printPopulation(population);
+		// geneticAlgorithm();
 		long endTime = System.currentTimeMillis();
 		long totalTime = endTime - startTime;
 		System.out.println("Run time:" + totalTime);
