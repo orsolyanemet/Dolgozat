@@ -1,0 +1,9 @@
+/*Nemet Orsolya*/
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link {
+    color: #FFC312;
+}
+img{
+	height:55;
+	width:55;
+}

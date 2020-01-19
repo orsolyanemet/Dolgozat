@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	<filter>
+        <filter-name>PageFilterAdmin</filter-name>
+        <filter-class>ro.edu.ubb.filter.PageFilterAdmin</filter-class>
+    </filter>
+    <filter>
+        <filter-name>PageFilterUser</filter-name>
+        <filter-class>ro.edu.ubb.filter.PageFilterUser</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PageFilterAdmin</filter-name>
+        <url-pattern>/adminhome.jsp</url-pattern>
+        <url-pattern>/adminmenu.jsp</url-pattern>
+        <url-pattern>/adduser.jsp</url-pattern>
+        <url-pattern>/addroom.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>PageFilterUser</filter-name>
+        <url-pattern>/userhome.jsp</url-pattern>
+        <url-pattern>/usermenu.jsp</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>ro.edu.ubb.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login.do</url-pattern>
+    </servlet-mapping>
+</web-app>

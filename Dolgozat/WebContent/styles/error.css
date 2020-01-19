@@ -1,0 +1,65 @@
+/*Nemet Orsolya*/
+html, input {
+	font-family: "arvo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+	background-color: #61b1ad;
+	margin: auto;
+	color: #fff;
+}
+
+a, a:visited, a:active {
+	color: #fff;
+	text-decoration: none;
+	background: #18343c;
+}
+
+.container {
+	max-width: 400px;
+	_width: 400px;
+	margin: 0 auto 80px;
+	text-align: center;
+}
+
+h1 {
+	margin: 0;
+}
+
+h2 {
+	font-size: 16px;
+	font-size: 1rem;
+	font-weight: 400;
+	margin: 0;
+	padding: 4px 0 10px;
+	color: #fff;
+}
+
+h3 {
+	margin: 20px 0 8px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.4;
+	padding: 0 30px;
+}
+
+.warning a {
+	display: block;
+	margin-top: 30px;
+	padding: 20px;
+	background: #18343c;
+}
+
+.four-oh-four {
+	max-width: 150px;
+	height: 120px;
+	text-indent: -9999px;
+	margin: auto;
+	background:
+		url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTYuNjY4IDk1LjY2MSIgPgo8Zz4KCTxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik00OS40NjMgOC4yMmwtMjYuMDkgNDYuOTY0SDYyLjc1djM3LjVoLTEyLjV2LTI1SDIuMTI3bDM2LjQxLTY1LjUzNkw0OS40NjMgOC4yMnogTTEzMS41IDQ4LjkgYzAgMTcuMjYxLTEzLjk4OSAzMS4yNS0zMS4yNSAzMS4yNWMtMTcuMjYyIDAtMzEuMjUtMTMuOTktMzEuMjUtMzEuMjVjMC0xNy4yNTggMTMuOTg5LTMxLjI1IDMxLjI1LTMxLjI1IEMxMTcuNTExIDE3LjcgMTMxLjUgMzEuNyAxMzEuNSA0OC45MzR6IE0xMTkgNDguOTMzYzAtMTAuMzQtOC40MS0xOC43NS0xOC43NS0xOC43NWMtMTAuMzQgMC0xOC43NTEgOC40MS0xOC43NTEgMTguOCBjMCAxMC4zIDguNCAxOC44IDE4LjggMTguNzUxQzExMC41OSA2Ny43IDExOSA1OS4zIDExOSA0OC45MzN6IE0xNTQuNjIgNTUuMTg0SDE5NHYzNy41aC0xMi41di0yNWgtNDguMTIxIGwzNi40MDgtNjUuNTM2bDEwLjkyNiA2LjA3MkwxNTQuNjIgNTUuMTg0eiIvPgo8L2c+Cjwvc3ZnPg==)
+		no-repeat center center;
+}
+input[type=button]{
+	font-size:12px;
+}

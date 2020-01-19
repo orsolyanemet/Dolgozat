@@ -1,0 +1,22 @@
+/*Nemet Orsolya*/
+.card-header{
+    color: #FFC312;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+}
+.card-body{
+    font-weight: bold;
+}
+.login_btn{
+	color:#FFC312;
+}
+.login_btn:hover{
+	color:#FFC312;
+}
+.my-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-family: sans-serif;
+}

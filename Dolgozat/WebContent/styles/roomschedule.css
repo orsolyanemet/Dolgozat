@@ -1,0 +1,27 @@
+/*Nemet Orsolya*/
+.timetable-workout {
+	font-size: 12px;
+	letter-spacing: 1px;
+	background-color: #FFC312;
+	font-weight: 700;
+	font-family: sans-serif;
+}
+
+.timetable, .table>thead>tr>th {
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	font-family: sans-serif;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,
+	.table>thead>tr>td, .table>thead>tr>th {
+	border-top: transparent;
+	color: #26282c;
+	border-bottom: 1px solid #eee;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+	background-color: hsl(224, 100%, 99%);
+}
