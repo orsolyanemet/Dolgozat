@@ -16,4 +16,10 @@ public abstract class DAOFactory {
 
 	public abstract UserDAO getUserDAO();
 
+	public abstract RequestDAO getRequestDAO();
+
+	public abstract RoomTypeDAO getRoomTypeDAO();
+
+	public abstract RoomDAO getRoomDAO();
+
 }

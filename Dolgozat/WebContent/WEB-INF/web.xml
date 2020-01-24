@@ -16,6 +16,10 @@
         <url-pattern>/adminmenu.jsp</url-pattern>
         <url-pattern>/adduser.jsp</url-pattern>
         <url-pattern>/addroom.jsp</url-pattern>
+        <url-pattern>/listrequests.jsp</url-pattern>
+        <url-pattern>/listusers.jsp</url-pattern>
+        <url-pattern>/listroomtypes.jsp</url-pattern>
+        <url-pattern>/listrooms.jsp</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>PageFilterUser</filter-name>

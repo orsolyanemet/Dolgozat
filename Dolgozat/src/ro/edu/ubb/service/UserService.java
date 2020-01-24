@@ -8,7 +8,6 @@ import ro.edu.ubb.dao.DAOException;
 import ro.edu.ubb.entity.RoleType;
 import ro.edu.ubb.entity.User;
 
-
 /**
  * Service for user.
  * 
@@ -32,7 +31,7 @@ public class UserService {
 			throw new ServiceException("Insert user failed.");
 		}
 	}
-	
+
 	public String createCheck(User user) {
 		try {
 			return userDAO.createCheck(user);
@@ -72,7 +71,7 @@ public class UserService {
 			throw new ServiceException("Finding user by username failed.");
 		}
 	}
-	
+
 	public User findByEmail(String email) {
 		try {
 			return userDAO.findByEmail(email);
@@ -80,7 +79,7 @@ public class UserService {
 			throw new ServiceException("Finding user by email failed.");
 		}
 	}
-	
+
 	public RoleType findUserRole(String email) {
 		try {
 			return userDAO.findUserRole(email);

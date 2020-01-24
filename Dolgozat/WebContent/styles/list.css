@@ -1,0 +1,21 @@
+thead {
+	font-weight: bold;
+}
+
+label {
+	text-align: center;
+	display: block;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 16pt;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.errorlabel {
+	font-family: sans-serif;
+	font-size: 16pt;
+	padding-top: 20px;
+	color: #ffc312;
+	font-weight: bold;
+}

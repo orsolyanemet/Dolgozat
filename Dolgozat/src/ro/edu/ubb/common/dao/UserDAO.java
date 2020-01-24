@@ -13,12 +13,20 @@ import ro.edu.ubb.entity.User;
  */
 public interface UserDAO {
 	List<User> getAllUsers();
+
 	User findByUsername(String username);
+
 	User findByEmail(String email);
+
 	RoleType findUserRole(String username);
+
 	User createUser(User user);
+
 	String createCheck(User user);
+
 	void updateUser(User user);
-    boolean deleteUser(Integer idUser);
-    boolean validateUser(User user);
+
+	boolean deleteUser(Integer idUser);
+
+	boolean validateUser(User user);
 }

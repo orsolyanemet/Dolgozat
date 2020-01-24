@@ -15,7 +15,7 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Integer idUser;
+	private String idUser;
 
 	private String firstName;
 
@@ -33,7 +33,7 @@ public class User implements Serializable{
 		super();
 	}
 	
-	public User(Integer idUser, String firstname, String lastname, String email, String username, String pdUser, RoleType roleType) {
+	public User(String idUser, String firstname, String lastname, String email, String username, String pdUser, RoleType roleType) {
 		super();
 		this.idUser = idUser;
 		this.firstName = firstname;
@@ -44,11 +44,11 @@ public class User implements Serializable{
 		this.roleType = roleType;
 	}
 
-	public Integer getIdUser() {
+	public String getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(Integer idUser) {
+	public void setIdUser(String idUser) {
 		this.idUser = idUser;
 	}
 

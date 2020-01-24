@@ -1,6 +1,6 @@
 package ro.edu.ubb.dao;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
@@ -26,6 +26,7 @@ import ro.edu.ubb.util.SecureData;
 public class JdbcUserDAO implements UserDAO {
 
 	private static final String USERNAME = "username";
+	private static final String ROLETYPE = "roleType";
 
 	public JdbcUserDAO() {
 		MongoConnectionManager.getInstance();
@@ -33,7 +34,22 @@ public class JdbcUserDAO implements UserDAO {
 
 	@Override
 	public List<User> getAllUsers() {
-		return Collections.emptyList();
+		List<User> users = new ArrayList<>();
+		MongoClient connection = MongoConnectionManager.getConnection();
+		MongoCollection<Document> collection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "User");
+		List<Document> usersFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
+		for (Document userFromDB : usersFromDB) {
+			if (userFromDB.getString(ROLETYPE).equals("USER")) {
+				User user = new User();
+				user.setUsername(userFromDB.getString("username"));
+				user.setFirstName(userFromDB.getString("firstName"));
+				user.setLastName(userFromDB.getString("lastName"));
+				user.setEmail(userFromDB.getString("email"));
+				users.add(user);
+			}
+		}
+		return users;
 	}
 
 	@Override
@@ -54,7 +70,7 @@ public class JdbcUserDAO implements UserDAO {
 		BasicDBObject whereQuery = new BasicDBObject();
 		whereQuery.put(USERNAME, username);
 		FindIterable<Document> document = collection.find(whereQuery);
-		return RoleType.valueOf((document.first().get("roleType")).toString());
+		return RoleType.valueOf((document.first().get(ROLETYPE)).toString());
 	}
 
 	@Override
@@ -86,14 +102,18 @@ public class JdbcUserDAO implements UserDAO {
 		whereQuery.put(USERNAME, user.getUsername());
 		FindIterable<Document> document = collection.find(whereQuery);
 		if (document.first() != null) {
-			user.setRoleType(RoleType.valueOf((document.first().get("roleType").toString())));
+			user.setRoleType(RoleType.valueOf((document.first().get(ROLETYPE).toString())));
 			if (user.getRoleType().equals(RoleType.ADMINISTRATOR)) {
-				return collection.find(Filters.and(Filters.eq(USERNAME, user.getUsername()),
-						Filters.eq("pdUser", user.getPdUser()))).first() != null;
+				return collection.find(
+						Filters.and(Filters.eq(USERNAME, user.getUsername()), Filters.eq("pdUser", user.getPdUser())))
+						.first() != null;
 			} else {
 				if (user.getRoleType().equals(RoleType.USER)) {
-					return collection.find(Filters.and(Filters.eq(USERNAME, user.getUsername()), Filters.eq("pdUser",
-							SecureData.convertHexToString(SecureData.hashPassword(user.getPdUser()))))).first() != null;
+					return collection
+							.find(Filters.and(Filters.eq(USERNAME, user.getUsername()),
+									Filters.eq("pdUser",
+											SecureData.convertHexToString(SecureData.hashPassword(user.getPdUser())))))
+							.first() != null;
 				}
 			}
 		}
