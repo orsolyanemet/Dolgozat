@@ -37,6 +37,7 @@ public class JdbcRoomTypeDAO implements RoomTypeDAO {
 		for (Document roomTypeFromDB : roomTypesFromDB) {
 			RoomType roomType = new RoomType();
 			List<RoomType> equivalentTo = new ArrayList<>();
+			roomType.setIdRoomType(roomTypeFromDB.getObjectId("_id").toString());
 			roomType.setRoomTypeName(roomTypeFromDB.getString("roomTypeName"));
 			List<ObjectId> equivalentToFromDB = (List<ObjectId>) roomTypeFromDB.get("equivalentTo");
 			if (equivalentToFromDB!=null) {
@@ -75,7 +76,7 @@ public class JdbcRoomTypeDAO implements RoomTypeDAO {
 	}
 
 	@Override
-	public boolean deleteRoomType(Integer idRoomType) {
+	public boolean deleteRoomType(String idRoomType) {
 		// TODO Auto-generated method stub
 		return false;
 	}

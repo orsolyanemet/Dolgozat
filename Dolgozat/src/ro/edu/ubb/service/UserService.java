@@ -48,7 +48,7 @@ public class UserService {
 		}
 	}
 
-	public boolean deleteUser(Integer idUser) {
+	public boolean deleteUser(String idUser) {
 		try {
 			return userDAO.deleteUser(idUser);
 		} catch (DAOException e) {

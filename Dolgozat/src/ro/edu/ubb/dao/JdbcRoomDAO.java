@@ -23,21 +23,25 @@ import ro.edu.ubb.util.MongoConnectionManager;
  *
  */
 public class JdbcRoomDAO implements RoomDAO {
+	
+	private MongoClient connection;
+	private MongoCollection<Document> collection;
 
 	public JdbcRoomDAO() {
 		MongoConnectionManager.getInstance();
+		connection = MongoConnectionManager.getConnection();
+		collection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "Room");
 	}
 
 	@Override
 	public List<Room> getAllRooms() {
 		List<Room> rooms = new ArrayList<>();
-		MongoClient connection = MongoConnectionManager.getConnection();
-		MongoCollection<Document> collection = MongoConnectionManager
-				.getCollection(MongoConnectionManager.getDatabase(connection), "Room");
 		List<Document> roomsFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
 		for (Document roomFromDB : roomsFromDB) {
 			Room room = new Room();
 			List<RoomType> roomTypeList = new ArrayList<>();
+			room.setIdRoom(roomFromDB.getObjectId("_id").toString());
 			room.setRoomName(roomFromDB.getString("roomName"));
 			room.setLocation(roomFromDB.getString("location"));
 			List<ObjectId> roomTypesToFromDB = (List<ObjectId>) roomFromDB.get("roomTypeList");
@@ -79,9 +83,15 @@ public class JdbcRoomDAO implements RoomDAO {
 	}
 
 	@Override
-	public boolean deleteRoom(Integer idRoom) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteRoom(String idRoom) {
+		MongoCollection<Document> reservationCollection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "Reservation");
+		BasicDBObject theQuery = new BasicDBObject();
+		theQuery.put("idRoom", new ObjectId(idRoom));
+		reservationCollection.deleteMany(theQuery);
+		theQuery = new BasicDBObject();
+		theQuery.put("_id", new ObjectId(idRoom));
+		return collection.deleteOne(theQuery).getDeletedCount()==1;
 	}
 
 }

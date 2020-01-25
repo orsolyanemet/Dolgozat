@@ -26,7 +26,7 @@ public interface UserDAO {
 
 	void updateUser(User user);
 
-	boolean deleteUser(Integer idUser);
+	boolean deleteUser(String idUser);
 
 	boolean validateUser(User user);
 }

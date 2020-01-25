@@ -47,7 +47,7 @@ public class RoomService {
 		}
 	}
 
-	public boolean deleteRoom(Integer idRoom) {
+	public boolean deleteRoom(String idRoom) {
 		try {
 			return roomDAO.deleteRoom(idRoom);
 		} catch (DAOException e) {

@@ -14,4 +14,8 @@ public interface RequestDAO {
 	List<Request> getAllRequests();
 
 	Request createRequest(Request request);
+	
+	List<Request> getUserRequests(String username);
+	
+	boolean deleteRequest(String idRequest);
 }

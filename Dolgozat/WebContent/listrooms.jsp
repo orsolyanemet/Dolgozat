@@ -22,13 +22,26 @@
 <link rel="icon" type="image/png" href="logo.png" sizes="55x55">
 <script src="js/adminmenu.js"></script>
 <script src="js/navigator.js"></script>
+<script src="js/filter.js"></script>
 </head>
 <body>
 	<div id="includedMenubar"></div>
 	<label>List of the rooms</label>
-	<button onClick="window.location.reload();">Refresh</button>
+	<div class="divrefresh">
+		<button onClick="window.location.reload();">Refresh</button>
+	</div>
+	<div class="col-md-3">
+		<form action="#" method="get">
+			<div class="input-group">
+				<input class="form-control" id="system-search" name="q"
+					placeholder="Search for" required> <span
+					class="input-group-btn">
+				</span>
+			</div>
+		</form>
+	</div>
 	<table id="myTable"
-		class="table table-striped table-hover refresh-container pull-down">
+		class="table table-list-search table-striped table-hover refresh-container pull-down">
 		<%
 			RoomService roomService = new RoomService();
 			request.getSession().setAttribute("rooms", roomService.getAllRooms());
@@ -42,10 +55,10 @@
 				<td>Room attributes</td>
 			</tr>
 		</thead>
+		<tbody>
 		<%
 			for (Room room : rooms) {
 		%>
-		<tbody>
 			<tr>
 				<td>
 					<%

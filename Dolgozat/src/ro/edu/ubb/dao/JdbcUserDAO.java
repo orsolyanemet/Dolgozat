@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 
 import ro.edu.ubb.common.dao.UserDAO;
 import ro.edu.ubb.entity.RoleType;
@@ -27,21 +29,24 @@ public class JdbcUserDAO implements UserDAO {
 
 	private static final String USERNAME = "username";
 	private static final String ROLETYPE = "roleType";
+	private MongoClient connection;
+	private MongoCollection<Document> collection;
 
 	public JdbcUserDAO() {
 		MongoConnectionManager.getInstance();
+		connection = MongoConnectionManager.getConnection();
+		collection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "User");
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		List<User> users = new ArrayList<>();
-		MongoClient connection = MongoConnectionManager.getConnection();
-		MongoCollection<Document> collection = MongoConnectionManager
-				.getCollection(MongoConnectionManager.getDatabase(connection), "User");
 		List<Document> usersFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
 		for (Document userFromDB : usersFromDB) {
 			if (userFromDB.getString(ROLETYPE).equals("USER")) {
 				User user = new User();
+				user.setIdUser(userFromDB.getObjectId("_id").toString());
 				user.setUsername(userFromDB.getString("username"));
 				user.setFirstName(userFromDB.getString("firstName"));
 				user.setLastName(userFromDB.getString("lastName"));
@@ -64,9 +69,6 @@ public class JdbcUserDAO implements UserDAO {
 
 	@Override
 	public RoleType findUserRole(String username) {
-		MongoClient connection = MongoConnectionManager.getConnection();
-		MongoCollection<Document> collection = MongoConnectionManager
-				.getCollection(MongoConnectionManager.getDatabase(connection), "User");
 		BasicDBObject whereQuery = new BasicDBObject();
 		whereQuery.put(USERNAME, username);
 		FindIterable<Document> document = collection.find(whereQuery);
@@ -89,15 +91,19 @@ public class JdbcUserDAO implements UserDAO {
 	}
 
 	@Override
-	public boolean deleteUser(Integer idUser) {
-		return false;
+	public boolean deleteUser(String idUser) {
+		MongoCollection<Document> reservationCollection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "Reservation");
+		BasicDBObject theQuery = new BasicDBObject();
+		theQuery.put("idUser", new ObjectId(idUser));
+		reservationCollection.deleteMany(theQuery);
+		theQuery = new BasicDBObject();
+		theQuery.put("_id", new ObjectId(idUser));
+		return collection.deleteOne(theQuery).getDeletedCount()==1;
 	}
 
 	@Override
 	public boolean validateUser(User user) {
-		MongoClient connection = MongoConnectionManager.getConnection();
-		MongoCollection<Document> collection = MongoConnectionManager
-				.getCollection(MongoConnectionManager.getDatabase(connection), "User");
 		BasicDBObject whereQuery = new BasicDBObject();
 		whereQuery.put(USERNAME, user.getUsername());
 		FindIterable<Document> document = collection.find(whereQuery);
@@ -109,10 +115,13 @@ public class JdbcUserDAO implements UserDAO {
 						.first() != null;
 			} else {
 				if (user.getRoleType().equals(RoleType.USER)) {
-					return collection
+					/*return collection
 							.find(Filters.and(Filters.eq(USERNAME, user.getUsername()),
 									Filters.eq("pdUser",
 											SecureData.convertHexToString(SecureData.hashPassword(user.getPdUser())))))
+							.first() != null;*/
+					return collection.find(
+							Filters.and(Filters.eq(USERNAME, user.getUsername()), Filters.eq("pdUser", user.getPdUser())))
 							.first() != null;
 				}
 			}

@@ -38,4 +38,20 @@ public class RequestService {
 			throw new ServiceException("Getting all requests failed.");
 		}
 	}
+	
+	public List<Request> getUserRequests(String username) {
+		try {
+			return requestDAO.getUserRequests(username);
+		} catch (DAOException e) {
+			throw new ServiceException("Getting user requests failed.");
+		}
+	}
+	
+	public boolean deleteRequest(String idRequest) {
+		try {
+			return requestDAO.deleteRequest(idRequest);
+		} catch (DAOException e) {
+			throw new ServiceException("Deleting requests failed.");
+		}
+	}
 }

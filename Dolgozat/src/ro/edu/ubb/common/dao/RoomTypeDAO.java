@@ -19,6 +19,6 @@ public interface RoomTypeDAO {
 
 	void updateRoomType(RoomType roomType);
 
-	boolean deleteRoomType(Integer idRoomType);
+	boolean deleteRoomType(String idRoomType);
 }
 

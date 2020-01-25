@@ -19,5 +19,5 @@ public interface RoomDAO {
 
 	void updateRoom(Room room);
 
-	boolean deleteRoom(Integer idRoom);
+	boolean deleteRoom(String idRoom);
 }

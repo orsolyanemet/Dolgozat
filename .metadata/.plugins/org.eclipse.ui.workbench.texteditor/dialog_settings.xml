@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="fitnessOf" key="selection"/>
+		<item value="User" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="user"/>
 			<item value="fitnessOf"/>
 			<item value="system.out"/>
 			<item value="isTheFittestChromosome"/>
@@ -22,7 +23,6 @@
 			<item value="getInitialPopulation"/>
 			<item value="9:44"/>
 			<item value="gen"/>
-			<item value="random"/>
 		</list>
 		<list key="replacehistory">
 		</list>

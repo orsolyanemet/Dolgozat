@@ -9,9 +9,16 @@
 		<li class="nav-item"><a class="nav-link" href="adminhome.jsp">
 				<i class="fa fa-home"></i> Home
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="listrequests.jsp">
-				<i class="fas fa-tasks"> </i> Requests
-		</a></li>
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbarDropdown" data-toggle="dropdown"> <i
+				class="fas fa-tasks"> </i> Requests
+		</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="listrequests.jsp"><i
+					class="fas fa-list"></i>List requests</a> <a class="dropdown-item"
+					href="deleterequest.jsp"><i class="fas fa-user-minus"></i>Delete
+					request</a>
+			</div></li>
 		<li class="nav-item"><a class="nav-link" href="roomschedule.jsp">
 				<i class="far fa-calendar-alt"> </i> Room schedule
 		</a></li>

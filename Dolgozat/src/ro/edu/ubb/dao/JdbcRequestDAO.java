@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
@@ -25,19 +26,23 @@ import ro.edu.ubb.util.MongoConnectionManager;
  */
 public class JdbcRequestDAO implements RequestDAO {
 	
+	private MongoClient connection;
+	private MongoCollection<Document> collection;
+	
 	public JdbcRequestDAO() {
 		MongoConnectionManager.getInstance();
+		connection = MongoConnectionManager.getConnection();
+		collection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "Reservation");
 	}
 
 	@Override
 	public List<Request> getAllRequests() {
 		List<Request> requests= new ArrayList<>();
-		MongoClient connection = MongoConnectionManager.getConnection();
-		MongoCollection<Document> collection = MongoConnectionManager
-				.getCollection(MongoConnectionManager.getDatabase(connection), "Reservation");
 		List<Document> requestsFromDB = (List<Document>) collection.find().into(new ArrayList<Document>());
 		for (Document requestFromDB : requestsFromDB) {
 			Request request = new Request();
+			request.setIdRequest(requestFromDB.getObjectId("_id").toString());
 			request.setReservationName(requestFromDB.getString("reservationName"));
 			List<Date> timesFromDB = (List<Date>) requestFromDB.get("time");
 			request.setFromTime(timesFromDB.get(0));
@@ -67,11 +72,53 @@ public class JdbcRequestDAO implements RequestDAO {
 		}
 		return requests;
 	}
+	
+	@Override
+	public List<Request> getUserRequests(String username) {
+		MongoCollection<Document> userCollection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), "User");
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("username",username);
+		FindIterable<Document> document = userCollection.find(whereQuery);
+		String idUser=document.first().get("_id").toString();	
+		List<Request> requests= new ArrayList<>();
+		whereQuery = new BasicDBObject();
+		whereQuery.put("idUser",new ObjectId(idUser));	
+		List<Document> requestsFromDB = (List<Document>) collection.find(whereQuery).into(new ArrayList<Document>());
+		for (Document requestFromDB : requestsFromDB) {
+			Request request = new Request();
+			request.setIdRequest(requestFromDB.getObjectId("_id").toString());
+			request.setReservationName(requestFromDB.getString("reservationName"));
+			List<Date> timesFromDB = (List<Date>) requestFromDB.get("time");
+			request.setFromTime(timesFromDB.get(0));
+			request.setToTime(timesFromDB.get(1));
+			request.setDuration(requestFromDB.getInteger("duration")); 
+			request.setReservationType(requestFromDB.getString("reservationType"));
+			Room room=new Room();
+			room.setIdRoom(requestFromDB.getObjectId("idRoom").toString());
+			MongoCollection<Document> roomCollection = MongoConnectionManager
+					.getCollection(MongoConnectionManager.getDatabase(connection), "Room");
+			whereQuery = new BasicDBObject();
+			whereQuery.put("_id",requestFromDB.getObjectId("idRoom"));
+			document = roomCollection.find(whereQuery);
+			room.setRoomName((document.first().get("roomName")).toString());
+			request.setRoom(room);
+			requests.add(request);
+		}
+		return requests;
+	}
 
 	@Override
 	public Request createRequest(Request request) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean deleteRequest(String idRequest) {
+		BasicDBObject theQuery = new BasicDBObject();
+		theQuery.put("_id", new ObjectId(idRequest));
+		return collection.deleteOne(theQuery).getDeletedCount()==1;
 	}
 
 }

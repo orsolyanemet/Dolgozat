@@ -22,13 +22,29 @@
 <link rel="icon" type="image/png" href="logo.png" sizes="55x55">
 <script src="js/adminmenu.js"></script>
 <script src="js/navigator.js"></script>
+<script src="js/filter.js"></script>
 </head>
 <body>
 	<div id="includedMenubar"></div>
 	<label>List of the requests</label>
-	<button onClick="window.location.reload();">Refresh</button>
+	<div class="divrefresh">
+		<button onClick="window.location.reload();">Refresh</button>
+	</div>
+	<div class="col-md-3">
+		<form action="#" method="get">
+			<div class="input-group">
+				<input class="form-control" id="system-search" name="q"
+					placeholder="Search for" required> <span
+					class="input-group-btn">
+					<button type="submit" class="btn btn-default">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</span>
+			</div>
+		</form>
+	</div>
 	<table id="myTable"
-		class="table table-striped table-hover refresh-container pull-down">
+		class="table table-list-search table-striped table-hover refresh-container pull-down">
 		<%
 			RequestService requestService = new RequestService();
 			request.getSession().setAttribute("requests",
@@ -46,10 +62,10 @@
 				<td>Requested by</td>
 			</tr>
 		</thead>
+		<tbody>
 		<%
 			for (Request req : requests) {
 		%>
-		<tbody>
 			<tr>
 				<td>
 					<%

@@ -19,3 +19,6 @@ label {
 	color: #ffc312;
 	font-weight: bold;
 }
+.divrefresh, .col-md-3{
+	display:inline-block;
+}
