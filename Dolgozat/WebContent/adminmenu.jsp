@@ -6,8 +6,8 @@
 		</div>
 	</a>
 	<ul class="navbar-nav mr-auto">
-		<li class="nav-item"><a class="nav-link" href="adminhome.jsp">
-				<i class="fa fa-home"></i> Home
+		<li class="nav-item"><a class="nav-link" href="roomschedule.jsp">
+				<i class="far fa-calendar-alt"> </i> Room schedule
 		</a></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbarDropdown" data-toggle="dropdown"> <i
@@ -19,9 +19,6 @@
 					href="deleterequest.jsp"><i class="fas fa-user-minus"></i>Delete
 					request</a>
 			</div></li>
-		<li class="nav-item"><a class="nav-link" href="roomschedule.jsp">
-				<i class="far fa-calendar-alt"> </i> Room schedule
-		</a></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbarDropdown" data-toggle="dropdown"> <i
 				class="fas fa-users-cog"> </i> Users

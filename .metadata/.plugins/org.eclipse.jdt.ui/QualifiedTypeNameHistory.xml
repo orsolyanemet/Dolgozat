@@ -35,7 +35,8 @@
 <fullyQualifiedTypeName name="ro.edu.ubb.entity.Room"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.entity.User"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.RoomTypeDAO"/>
-<fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.entity.RoomType"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.RoomDAO"/>
+<fullyQualifiedTypeName name="com.mongodb.client.result.DeleteResult"/>
+<fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
 </qualifiedTypeNameHistroy>

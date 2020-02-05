@@ -1,9 +1,11 @@
 
-_squid:S1989@"'Add a "try/catch" block for "dispatch".(ÁÊ8Œ§¯Îû-HÌìRMINORZVULNERABILITY
-_squid:S19896"'Add a "try/catch" block for "dispatch".(°µæÌ8Œ§¯Îû-HĞìRMINORZVULNERABILITY
-_squid:S19896"'Add a "try/catch" block for "dispatch".(°µæÌ8Œ§¯Îû-HËìRMINORZVULNERABILITY
-dsquid:S1989:"'Add a "try/catch" block for "dispatch".(µæ§‘üÿÿÿÿ8Œ§¯Îû-HÍìRMINORZVULNERABILITY
-_squid:S1989<"'Add a "try/catch" block for "dispatch".(Ú–¯Ä8Œ§¯Îû-HÑìRMINORZVULNERABILITY
-_squid:S1989<"'Add a "try/catch" block for "dispatch".(Ú–¯Ä8Œ§¯Îû-HÅìRMINORZVULNERABILITY
-dsquid:S1989:"'Add a "try/catch" block for "dispatch".(µæ§‘üÿÿÿÿ8Œ§¯Îû-HÏìRMINORZVULNERABILITY
-_squid:S1989@"'Add a "try/catch" block for "dispatch".(ÁÊ8Œ§¯Îû-HÇìRMINORZVULNERABILITY
+‰squid:S1192&"LDefine a constant instead of duplicating this literal "accountType" 3 times.(É¸û‰ûÿÿÿÿ8èĞ«·.H…‚RCRITICALZ
+CODE_SMELL
+_squid:S1989C"'Add a "try/catch" block for "dispatch".(ÁÊ8Œ§¯Îû-HâRMINORZVULNERABILITY
+_squid:S1989?"'Add a "try/catch" block for "dispatch".(Ú–¯Ä8Œ§¯Îû-HãRMINORZVULNERABILITY
+dsquid:S1989="'Add a "try/catch" block for "dispatch".(ûªÊÂûÿÿÿÿ8Œ§¯Îû-HàRMINORZVULNERABILITY
+dsquid:S19898"'Add a "try/catch" block for "dispatch".(ûªÊÂûÿÿÿÿ8Œ§¯Îû-HæRMINORZVULNERABILITY
+dsquid:S19898"'Add a "try/catch" block for "dispatch".(ûªÊÂûÿÿÿÿ8Œ§¯Îû-HáRMINORZVULNERABILITY
+_squid:S1989C"'Add a "try/catch" block for "dispatch".(ÁÊ8Œ§¯Îû-HäRMINORZVULNERABILITY
+_squid:S1989?"'Add a "try/catch" block for "dispatch".(Ú–¯Ä8Œ§¯Îû-HßRMINORZVULNERABILITY
+dsquid:S1989="'Add a "try/catch" block for "dispatch".(ûªÊÂûÿÿÿÿ8Œ§¯Îû-HåRMINORZVULNERABILITY

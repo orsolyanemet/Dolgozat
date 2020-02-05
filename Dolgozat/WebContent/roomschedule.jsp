@@ -16,7 +16,11 @@
 <link rel="stylesheet" type="text/css" href="styles/navbar.css">
 <link rel="stylesheet" type="text/css" href="styles/roomschedule.css">
 <link rel="icon" type="image/png" href="logo.png" sizes="55x55">
+<% if (request.getSession().getAttribute("accountType").equals("Administrator")){ %>
 <script src="js/adminmenu.js"></script>
+<%} else{ %>
+<script src="js/usermenu.js"></script>
+<% } %>
 <script src="js/navigator.js"></script>
 </head>
 <body>

@@ -12,7 +12,6 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>PageFilterAdmin</filter-name>
-		<url-pattern>/adminhome.jsp</url-pattern>
 		<url-pattern>/adminmenu.jsp</url-pattern>
 		<url-pattern>/adduser.jsp</url-pattern>
 		<url-pattern>/addroom.jsp</url-pattern>
@@ -22,15 +21,14 @@
 		<url-pattern>/listrooms.jsp</url-pattern>
 		<url-pattern>/deleteuser.jsp</url-pattern>
 		<url-pattern>/deleteroom.jsp</url-pattern>
-		<url-pattern>/roomschedule.jsp</url-pattern>
 		<url-pattern>/deleterequest.jsp</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>PageFilterUser</filter-name>
-		<url-pattern>/userhome.jsp</url-pattern>
 		<url-pattern>/usermenu.jsp</url-pattern>
 		<url-pattern>/listuserrequests.jsp</url-pattern>
 		<url-pattern>/deleteuserrequest.jsp</url-pattern>
+		<url-pattern>/changepassword.jsp</url-pattern>
 	</filter-mapping>
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>

@@ -41,6 +41,7 @@ public class LogoutServlet extends HttpServlet {
 			req.getSession().setAttribute("loggedUsername", "");
 			req.getSession().setAttribute("AuthenticatedAdmin", null);
 			req.getSession().setAttribute("AuthenticatedUser", null);
+			req.getSession().setAttribute("accountType", "");
 			dispatch("/login.jsp", req, res);
 		} catch (Exception ex) {
 			dispatch("/error.jsp", req, res);

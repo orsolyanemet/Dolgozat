@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 		req.getSession().setAttribute("loggedUsername", "");
 		req.getSession().setAttribute("AuthenticatedAdmin","");
 		req.getSession().setAttribute("AuthenticatedUser","");
+		req.getSession().setAttribute("accountType","");
 	}
 
 	@Override
@@ -51,11 +52,13 @@ public class LoginServlet extends HttpServlet {
 			RoleType roleType=userService.findUserRole(user.getUsername());
 			if(roleType==RoleType.ADMINISTRATOR) {
 				req.getSession().setAttribute("AuthenticatedAdmin",user);
-				dispatch("adminhome.jsp", req, res);
+				req.getSession().setAttribute("accountType", "Administrator");
+				dispatch("roomschedule.jsp", req, res);
 			}
 			else if(roleType==RoleType.USER){
 				req.getSession().setAttribute("AuthenticatedUser",user);
-				dispatch("userhome.jsp", req, res);
+				req.getSession().setAttribute("accountType", "User");
+				dispatch("roomschedule.jsp", req, res);
 			}else {
 				dispatch("error.jsp", req, res);
 			}
