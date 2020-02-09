@@ -10,6 +10,10 @@
 		<filter-name>PageFilterUser</filter-name>
 		<filter-class>ro.edu.ubb.filter.PageFilterUser</filter-class>
 	</filter>
+	<filter>
+		<filter-name>PageFilterCommon</filter-name>
+		<filter-class>ro.edu.ubb.filter.PageFilterCommon</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>PageFilterAdmin</filter-name>
 		<url-pattern>/adminmenu.jsp</url-pattern>
@@ -21,7 +25,8 @@
 		<url-pattern>/listrooms.jsp</url-pattern>
 		<url-pattern>/deleteuser.jsp</url-pattern>
 		<url-pattern>/deleteroom.jsp</url-pattern>
-		<url-pattern>/deleterequest.jsp</url-pattern>
+		<url-pattern>/deleterequest.jsp</url-pattern>	
+		<url-pattern>/edituser.jsp</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>PageFilterUser</filter-name>
@@ -29,6 +34,10 @@
 		<url-pattern>/listuserrequests.jsp</url-pattern>
 		<url-pattern>/deleteuserrequest.jsp</url-pattern>
 		<url-pattern>/changepassword.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PageFilterCommon</filter-name>
+		<url-pattern>/roomschedule.jsp</url-pattern>
 	</filter-mapping>
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>

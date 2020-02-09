@@ -24,9 +24,9 @@ public class UserService {
 		userDAO = daoFactory.getUserDAO();
 	}
 
-	public User createUser(User user) {
+	public void createUser(User user) {
 		try {
-			return userDAO.createUser(user);
+			userDAO.createUser(user);
 		} catch (DAOException e) {
 			throw new ServiceException("Insert user failed.");
 		}
@@ -40,9 +40,9 @@ public class UserService {
 		}
 	}
 
-	public void updateUser(User user) {
+	public boolean updateUser(User user) {
 		try {
-			userDAO.updateUser(user);
+			return userDAO.updateUser(user);
 		} catch (DAOException e) {
 			throw new ServiceException("Update user failed.");
 		}
@@ -79,6 +79,14 @@ public class UserService {
 			throw new ServiceException("Finding user by email failed.");
 		}
 	}
+	
+	public User findById(String idUser) {
+		try {
+			return userDAO.findById(idUser);
+		} catch (DAOException e) {
+			throw new ServiceException("Finding user by id failed.");
+		}
+	}
 
 	public RoleType findUserRole(String email) {
 		try {
@@ -93,6 +101,14 @@ public class UserService {
 			return userDAO.getAllUsers();
 		} catch (DAOException e) {
 			throw new ServiceException("Getting all users failed.");
+		}
+	}
+
+	public boolean changePdUser(String username, String currentPd, String newPd) {
+		try {
+			return userDAO.changePdUser(username, currentPd, newPd);
+		} catch (DAOException e) {
+			throw new ServiceException("Updating user password failed.");
 		}
 	}
 }

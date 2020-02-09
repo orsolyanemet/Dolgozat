@@ -1,5 +1,15 @@
 
-Šsquid:UselessImportCheck"CRemove this unused import 'com.mongodb.client.result.DeleteResult'.(ç“Ùùùÿÿÿÿ8¡«¯ğı-HÙRMINORZ
+squid:S11923"IDefine a constant instead of duplicating this literal "lastName" 6 times.(şÌ…†8…Âü¡‚.Hù‡RCRITICALZ
 CODE_SMELL
-…squid:CommentedOutCodeLinez"<This block of commented-out lines of code should be removed.(Ö˜±Èûÿÿÿÿ8±Î«òı-HÚRMAJORZ
+~squid:S11924"FDefine a constant instead of duplicating this literal "email" 6 times.(Ê¼ñ¯8…Âü¡‚.H÷‡RCRITICALZ
+CODE_SMELL
+‚squid:S11922"JDefine a constant instead of duplicating this literal "firstName" 5 times.(ø˜´…8…Âü¡‚.Hû‡RCRITICALZ
+CODE_SMELL
+Šsquid:UselessImportCheck"CRemove this unused import 'com.mongodb.client.result.UpdateResult'.(çÓçÃşÿÿÿÿ8Äâ—Ğ‚.H×ˆRMINORZ
+CODE_SMELL
+vsquid:S1854„";Remove this useless assignment to local variable "created".(ˆ»Ô¨ıÿÿÿÿ8û‘ä¡‚.Hü‡RMAJORZ
+CODE_SMELL
+†squid:S1192"IDefine a constant instead of duplicating this literal "username" 4 times.(êš˜ãüÿÿÿÿ8ñ¹î¡‚.Hú‡RCRITICALZ
+CODE_SMELL
+squid:S1192|"GDefine a constant instead of duplicating this literal "pdUser" 5 times.(Òš³ƒ8³â‡£‚.Hø‡RCRITICALZ
 CODE_SMELL

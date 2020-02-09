@@ -27,8 +27,6 @@ D
 WebContent/error.jsp,1\8\183b0b8d060d5c8723e39cca4fde6ce28eb387cd
 K
 WebContent/roomschedule.jsp,f\1\f1efb0044755231697eed9c6844417960acc26da
-G
-WebContent/userhome.jsp,d\e\de5af06ff9a1855d7fd516b7e67efc19e7449db4
 J
 WebContent/js/navigator.js,3\e\3e09755c1db859959c1ad1c261eac12ba451f840
 S
@@ -53,8 +51,6 @@ F
 WebContent/adduser.jsp,0\c\0c5506e66f32846f239e8bc8a197a056ae823602
 J
 WebContent/styles/form.css,2\9\296a8796dc5245e62ba30b9d0e3010b80600b5c2
-H
-WebContent/adminhome.jsp,6\a\6a6e2f66a91cdad40d8aa56cc92b92c41cf1c06f
 G
 WebContent/usermenu.jsp,4\4\444f4cd859478c82782b32b4fe526c788b49d646
 W
@@ -141,11 +137,27 @@ L
 WebContent/deleterequest.jsp,8\0\80307f91213f6645c4fd7fa70d6472ee25446efd
 G
 WebContent/js/filter.js,d\4\d4b75d19deb8bfcea5bfe35f182d4a35496a7e55
-`
-0src/ro/edu/ubb/filter/PageFilterAdminOrUser.java,d\7\d7c6b567d78a39eef0f6c3f9cb0b60c83d78cf58
-[
-+src/ro/edu/ubb/filter/PageFilterCommon.java,5\8\585acafcefd2dc308aaf2ebb23da059818527abe
 O
 WebContent/js/changepassword.js,f\2\f2adb1eda6e512399fdd866d7cc1cfd0161d732f
 M
 WebContent/changepassword.jsp,1\c\1cebe632ce434fbd5f14f6ea8c4ca7e2118fdb9c
+H
+WebContent/js/adduser.js,2\f\2f602d82f28531acd6ee74c39e13acf923b9f256
+Z
+*src/ro/edu/ubb/servlet/AddUserServlet.java,6\5\6529dff9086a3199a7d4e19caf8045ff0bd9abbf
+a
+1src/ro/edu/ubb/servlet/ChangePasswordServlet.java,1\6\16719ddfdb211c6c1dbb91b41b390b44c41c85e1
+H
+WebContent/editusers.jsp,a\1\a1de3a483b7bf5792d0396450da923755fc19ed4
+[
++src/ro/edu/ubb/filter/PageFilterCommon.java,5\8\585acafcefd2dc308aaf2ebb23da059818527abe
+[
++src/ro/edu/ubb/servlet/EditUserServlet.java,9\2\9264c51d6f8bf93a0bc3a389d5f4abbf3b24f890
+N
+WebContent/js/editaddchange.js,8\e\8e88e58d60de5009de28fec1ca0c576f19aaf5bf
+N
+WebContent/styles/edituser.css,6\a\6a4e6ea4739387d91e00a46f11fbff2a7cbb8e14
+G
+WebContent/edituser.jsp,3\6\3673faad4f882a0eedd2a6f65df89007b8bcd73d
+I
+WebContent/js/edituser.js,4\f\4ff9666c8308479e2092b5222995fa0a98a004fd

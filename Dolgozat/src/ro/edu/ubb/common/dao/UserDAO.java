@@ -13,6 +13,8 @@ import ro.edu.ubb.entity.User;
  */
 public interface UserDAO {
 	List<User> getAllUsers();
+	
+	User findById(String idUser);
 
 	User findByUsername(String username);
 
@@ -20,13 +22,15 @@ public interface UserDAO {
 
 	RoleType findUserRole(String username);
 
-	User createUser(User user);
+	void createUser(User user);
 
 	String createCheck(User user);
 
-	void updateUser(User user);
+	boolean updateUser(User user);
 
 	boolean deleteUser(String idUser);
 
 	boolean validateUser(User user);
+	
+	boolean changePdUser(String username, String currentPd, String newPd);
 }

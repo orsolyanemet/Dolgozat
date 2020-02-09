@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
-<fullyQualifiedTypeName name="ro.edu.ubb.util.SecureData"/>
 <fullyQualifiedTypeName name="org.bson.conversions.Bson"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.dao.JdbcUserDAO"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.UserDAOFactory"/>
@@ -39,4 +38,8 @@
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.RoomDAO"/>
 <fullyQualifiedTypeName name="com.mongodb.client.result.DeleteResult"/>
 <fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.util.SecureData"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="com.mongodb.client.result.UpdateResult"/>
 </qualifiedTypeNameHistroy>
