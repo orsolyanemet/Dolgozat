@@ -28,8 +28,8 @@ public class DeleteRoomServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private RoomService roomService=new RoomService();
-	private UserService userService=new UserService();
+	private static RoomService roomService=new RoomService();
+	private static UserService userService=new UserService();
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

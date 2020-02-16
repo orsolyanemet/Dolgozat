@@ -109,8 +109,8 @@
 									class="btn float-right login_btn bg-dark font-weight-bold" onclick="submitButtonClicked()">
 									Register</button>
 							</div>
-							<br> <br> <label class="d-flex justify-content-center"><span
-							id="msg3" class="important">${messageResponse}</span><br></label>
+							<br> <br> <label id="responseMessage" class="d-flex justify-content-center important"><span
+							></span><br></label>
 						</form>
 					</div>
 				</div>

@@ -28,8 +28,8 @@ public class DeleteUserRequestServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private UserService userService=new UserService();
-	private RequestService requestService=new RequestService();
+	private static UserService userService=new UserService();
+	private static RequestService requestService=new RequestService();
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

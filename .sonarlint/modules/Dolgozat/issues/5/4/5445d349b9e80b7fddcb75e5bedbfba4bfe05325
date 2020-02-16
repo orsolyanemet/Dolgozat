@@ -1,122 +1,122 @@
 
-osquid:CallToDeprecatedMethodì"/Remove this use of "setYear"; it is deprecated.(¿˜½H’óRMINORZ
+usquid:CallToDeprecatedMethodò"0Remove this use of "setMonth"; it is deprecated.(ïæşÿÿÿÿHóRMINORZ
 CODE_SMELL
-wsquid:CallToDeprecatedMethodº"2Remove this use of "setSeconds"; it is deprecated.(™‘°œüÿÿÿÿH†óRMINORZ
+wsquid:CallToDeprecatedMethod²"2Remove this use of "setSeconds"; it is deprecated.(™‘°œüÿÿÿÿHöòRMINORZ
 CODE_SMELL
-psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚHñòRMINORZ
+osquid:CallToDeprecatedMethodî"/Remove this use of "getDate"; it is deprecated.(´¨šĞHíòRMINORZ
+CODE_SMELL
+tsquid:CallToDeprecatedMethod™"/Remove this use of "getYear"; it is deprecated.(­‚×¹úÿÿÿÿHˆóRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethodğ"2Remove this use of "setMinutes"; it is deprecated.(‘àî¿şÿÿÿÿH÷òRMINORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethodí"0Remove this use of "setMonth"; it is deprecated.(«ù‹áÿÿÿÿÿH“óRMINORZ
+CODE_SMELL
+„squid:S3776š"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¢ÓóıHûòRCRITICALZ
+CODE_SMELL
+osquid:CallToDeprecatedMethodî"/Remove this use of "setDate"; it is deprecated.(´¨šĞHùòRMINORZ
+CODE_SMELL
+rsquid:CallToDeprecatedMethodš"2Remove this use of "getMinutes"; it is deprecated.(˜ ÄHşòRMINORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethod‚"0Remove this use of "getHours"; it is deprecated.(İ–øìıÿÿÿÿHŒóRMINORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethodô"0Remove this use of "setHours"; it is deprecated.(ÅÎÆ¡ıÿÿÿÿHóRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethod±"2Remove this use of "getMinutes"; it is deprecated.(´¸ùÿÿÿÿÿHóRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethod¿"2Remove this use of "setSeconds"; it is deprecated.(™‘°œüÿÿÿÿHìòRMINORZ
+CODE_SMELL
+qsquid:CallToDeprecatedMethod "2Remove this use of "getMinutes"; it is deprecated.(·²[HïòRMINORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethodò"0Remove this use of "getMonth"; it is deprecated.(ïæşÿÿÿÿHóRMINORZ
+CODE_SMELL
+g
+squid:S106ƒ"9Replace this use of System.out or System.err by a logger.(©áˆHêòRMAJORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethodŸ"0Remove this use of "getHours"; it is deprecated.(—÷ñùúÿÿÿÿH”óRMINORZ
+CODE_SMELL
+psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚH óRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethodœ"2Remove this use of "getMinutes"; it is deprecated.(ùïÁ±ûÿÿÿÿHƒóRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethod¾"2Remove this use of "setMinutes"; it is deprecated.(´¸ùÿÿÿÿÿH›óRMINORZ
+CODE_SMELL
+psquid:CallToDeprecatedMethodš"0Remove this use of "getHours"; it is deprecated.(˜ ÄHğòRMINORZ
+CODE_SMELL
+g
+squid:S106‡"9Replace this use of System.out or System.err by a logger.(üÂ¹êHšóRMAJORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethodœ"2Remove this use of "getMinutes"; it is deprecated.(ùïÁ±ûÿÿÿÿHóRMINORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethod˜"0Remove this use of "getMonth"; it is deprecated.(‰·ª‘ıÿÿÿÿHœóRMINORZ
 CODE_SMELL
 l
 squid:S106Â"9Replace this use of System.out or System.err by a logger.(ØÄïşÿÿÿÿHóRMAJORZ
 CODE_SMELL
-usquid:CallToDeprecatedMethod"0Remove this use of "getHours"; it is deprecated.(ãÜœ¯ıÿÿÿÿH…óRMINORZ
-CODE_SMELL
-usquid:CallToDeprecatedMethod‚"0Remove this use of "getHours"; it is deprecated.(İ–øìıÿÿÿÿHŒóRMINORZ
-CODE_SMELL
-l
-squid:S106„"9Replace this use of System.out or System.err by a logger.(»Ìà‚ÿÿÿÿÿHúòRMAJORZ
-CODE_SMELL
-osquid:CallToDeprecatedMethodî"/Remove this use of "getDate"; it is deprecated.(´¨šĞHíòRMINORZ
-CODE_SMELL
-k
-squid:S106J"9Replace this use of System.out or System.err by a logger.(¡£ÅùÿÿÿÿH‘óRMAJORZ
-CODE_SMELL
-qsquid:CallToDeprecatedMethod "2Remove this use of "getMinutes"; it is deprecated.(·²[HïòRMINORZ
+osquid:CallToDeprecatedMethodñ"/Remove this use of "getYear"; it is deprecated.(Ã£È÷HıòRMINORZ
 CODE_SMELL
 usquid:CallToDeprecatedMethod™"0Remove this use of "getHours"; it is deprecated.(—÷ñùúÿÿÿÿHŸóRMINORZ
 CODE_SMELL
-wsquid:CallToDeprecatedMethodğ"2Remove this use of "setMinutes"; it is deprecated.(‘àî¿şÿÿÿÿH÷òRMINORZ
-CODE_SMELL
-osquid:CallToDeprecatedMethodñ"/Remove this use of "setYear"; it is deprecated.(Ã£È÷H–óRMINORZ
-CODE_SMELL
-osquid:CallToDeprecatedMethodñ"/Remove this use of "getYear"; it is deprecated.(Ã£È÷HıòRMINORZ
-CODE_SMELL
-psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚH™óRMINORZ
+osquid:CallToDeprecatedMethodì"/Remove this use of "setYear"; it is deprecated.(¿˜½H’óRMINORZ
 CODE_SMELL
 tsquid:CallToDeprecatedMethod˜"/Remove this use of "getDate"; it is deprecated.(‰·ª‘ıÿÿÿÿHôòRMINORZ
 CODE_SMELL
-usquid:CallToDeprecatedMethodò"0Remove this use of "getMonth"; it is deprecated.(ïæşÿÿÿÿHóRMINORZ
-CODE_SMELL
 tsquid:CallToDeprecatedMethod™"/Remove this use of "getYear"; it is deprecated.(­‚×¹úÿÿÿÿHõòRMINORZ
 CODE_SMELL
-„squid:S3776š"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¢ÓóıHûòRCRITICALZ
+psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚHŠóRMINORZ
 CODE_SMELL
-psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚH óRMINORZ
+psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚH™óRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethod¹"2Remove this use of "setMinutes"; it is deprecated.(´¸ùÿÿÿÿÿHéòRMINORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethod"0Remove this use of "getHours"; it is deprecated.(ãÜœ¯ıÿÿÿÿHèòRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethod¾"2Remove this use of "getMinutes"; it is deprecated.(´¸ùÿÿÿÿÿHóRMINORZ
+CODE_SMELL
+psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚHñòRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethodº"2Remove this use of "setSeconds"; it is deprecated.(™‘°œüÿÿÿÿH†óRMINORZ
+CODE_SMELL
+osquid:CallToDeprecatedMethodñ"/Remove this use of "setYear"; it is deprecated.(Ã£È÷H–óRMINORZ
+CODE_SMELL
+wsquid:CallToDeprecatedMethod¹"2Remove this use of "getMinutes"; it is deprecated.(´¸ùÿÿÿÿÿH€óRMINORZ
+CODE_SMELL
+tsquid:CallToDeprecatedMethod˜"/Remove this use of "getDate"; it is deprecated.(‰·ª‘ıÿÿÿÿH•óRMINORZ
 CODE_SMELL
 usquid:CallToDeprecatedMethod˜"0Remove this use of "getHours"; it is deprecated.(éÊØÅşÿÿÿÿH˜óRMINORZ
 CODE_SMELL
 g
 squid:S106ğ"9Replace this use of System.out or System.err by a logger.(ì×‚§HóòRMAJORZ
 CODE_SMELL
-usquid:CallToDeprecatedMethod"0Remove this use of "getHours"; it is deprecated.(ãÜœ¯ıÿÿÿÿHèòRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod±"2Remove this use of "setMinutes"; it is deprecated.(´¸ùÿÿÿÿÿH‡óRMINORZ
-CODE_SMELL
 wsquid:CallToDeprecatedMethodõ"2Remove this use of "setMinutes"; it is deprecated.(ÅéÿÿÿÿÿHòòRMINORZ
-CODE_SMELL
-usquid:CallToDeprecatedMethod˜"0Remove this use of "getMonth"; it is deprecated.(‰·ª‘ıÿÿÿÿHÿòRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod¿"2Remove this use of "setSeconds"; it is deprecated.(™‘°œüÿÿÿÿHìòRMINORZ
-CODE_SMELL
-usquid:CallToDeprecatedMethodò"0Remove this use of "setMonth"; it is deprecated.(ïæşÿÿÿÿHóRMINORZ
-CODE_SMELL
-g
-squid:S106ƒ"9Replace this use of System.out or System.err by a logger.(©áˆHêòRMAJORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod¹"2Remove this use of "getMinutes"; it is deprecated.(´¸ùÿÿÿÿÿH€óRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod¾"2Remove this use of "setMinutes"; it is deprecated.(´¸ùÿÿÿÿÿH›óRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod¹"2Remove this use of "setMinutes"; it is deprecated.(´¸ùÿÿÿÿÿHéòRMINORZ
-CODE_SMELL
-tsquid:CallToDeprecatedMethodó"/Remove this use of "setDate"; it is deprecated.(¶÷úºùÿÿÿÿH‰óRMINORZ
 CODE_SMELL
 osquid:CallToDeprecatedMethodì"/Remove this use of "getYear"; it is deprecated.(¿˜½HüòRMINORZ
 CODE_SMELL
 usquid:CallToDeprecatedMethodí"0Remove this use of "getMonth"; it is deprecated.(«ù‹áÿÿÿÿÿHøòRMINORZ
 CODE_SMELL
-tsquid:CallToDeprecatedMethod™"/Remove this use of "getYear"; it is deprecated.(­‚×¹úÿÿÿÿHˆóRMINORZ
+usquid:CallToDeprecatedMethod˜"0Remove this use of "getMonth"; it is deprecated.(‰·ª‘ıÿÿÿÿHÿòRMINORZ
+CODE_SMELL
+tsquid:CallToDeprecatedMethodó"/Remove this use of "setDate"; it is deprecated.(¶÷úºùÿÿÿÿH‰óRMINORZ
+CODE_SMELL
+l
+squid:S106„"9Replace this use of System.out or System.err by a logger.(»Ìà‚ÿÿÿÿÿHúòRMAJORZ
+CODE_SMELL
+usquid:CallToDeprecatedMethod"0Remove this use of "getHours"; it is deprecated.(ãÜœ¯ıÿÿÿÿH…óRMINORZ
+CODE_SMELL
+‰squid:S3776ú"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÃÚã›úÿÿÿÿH‚óRCRITICALZ
 CODE_SMELL
 g
 squid:S106î"9Replace this use of System.out or System.err by a logger.(Ÿí¶ìH‹óRMAJORZ
 CODE_SMELL
-psquid:CallToDeprecatedMethodš"0Remove this use of "getHours"; it is deprecated.(˜ ÄHğòRMINORZ
-CODE_SMELL
 ‰squid:S3776Ÿ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(µ™Û«úÿÿÿÿHëòRCRITICALZ
 CODE_SMELL
-tsquid:CallToDeprecatedMethod˜"/Remove this use of "getDate"; it is deprecated.(‰·ª‘ıÿÿÿÿH•óRMINORZ
+k
+squid:S106J"9Replace this use of System.out or System.err by a logger.(¡£ÅùÿÿÿÿH‘óRMAJORZ
 CODE_SMELL
-usquid:CallToDeprecatedMethodô"0Remove this use of "setHours"; it is deprecated.(ÅÎÆ¡ıÿÿÿÿHóRMINORZ
-CODE_SMELL
-tsquid:CallToDeprecatedMethodó"/Remove this use of "getDate"; it is deprecated.(¶÷úºùÿÿÿÿH—óRMINORZ
-CODE_SMELL
-usquid:CallToDeprecatedMethodï"0Remove this use of "setHours"; it is deprecated.(œˆí°şÿÿÿÿHîòRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod¾"2Remove this use of "getMinutes"; it is deprecated.(´¸ùÿÿÿÿÿHóRMINORZ
-CODE_SMELL
-osquid:CallToDeprecatedMethodî"/Remove this use of "setDate"; it is deprecated.(´¨šĞHùòRMINORZ
-CODE_SMELL
-‰squid:S3776ú"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÃÚã›úÿÿÿÿH‚óRCRITICALZ
-CODE_SMELL
-usquid:CallToDeprecatedMethodí"0Remove this use of "setMonth"; it is deprecated.(«ù‹áÿÿÿÿÿH“óRMINORZ
-CODE_SMELL
-rsquid:CallToDeprecatedMethodš"2Remove this use of "getMinutes"; it is deprecated.(˜ ÄHşòRMINORZ
-CODE_SMELL
-usquid:CallToDeprecatedMethodŸ"0Remove this use of "getHours"; it is deprecated.(—÷ñùúÿÿÿÿH”óRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethodœ"2Remove this use of "getMinutes"; it is deprecated.(ùïÁ±ûÿÿÿÿHƒóRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod²"2Remove this use of "setSeconds"; it is deprecated.(™‘°œüÿÿÿÿHöòRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethod±"2Remove this use of "getMinutes"; it is deprecated.(´¸ùÿÿÿÿÿHóRMINORZ
-CODE_SMELL
-wsquid:CallToDeprecatedMethodœ"2Remove this use of "getMinutes"; it is deprecated.(ùïÁ±ûÿÿÿÿHóRMINORZ
-CODE_SMELL
-psquid:CallToDeprecatedMethod›"0Remove this use of "getHours"; it is deprecated.(øÓåÚHŠóRMINORZ
-CODE_SMELL
-usquid:CallToDeprecatedMethod˜"0Remove this use of "getMonth"; it is deprecated.(‰·ª‘ıÿÿÿÿHœóRMINORZ
+wsquid:CallToDeprecatedMethod±"2Remove this use of "setMinutes"; it is deprecated.(´¸ùÿÿÿÿÿH‡óRMINORZ
 CODE_SMELL
 osquid:CallToDeprecatedMethod "0Remove this use of "getHours"; it is deprecated.(·²[H„óRMINORZ
 CODE_SMELL
-g
-squid:S106‡"9Replace this use of System.out or System.err by a logger.(üÂ¹êHšóRMAJORZ
+usquid:CallToDeprecatedMethodï"0Remove this use of "setHours"; it is deprecated.(œˆí°şÿÿÿÿHîòRMINORZ
+CODE_SMELL
+tsquid:CallToDeprecatedMethodó"/Remove this use of "getDate"; it is deprecated.(¶÷úºùÿÿÿÿH—óRMINORZ
 CODE_SMELL

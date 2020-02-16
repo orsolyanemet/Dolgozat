@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -663150891209934794L;
 	private static final String MSGINCORRECTDATA="msgIncorrectData";
+	private static final String ACCOUNTTYPE="accountType";
 	private static UserService userService = new UserService();
 	
 	@Override
@@ -35,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		req.getSession().setAttribute("loggedUsername", "");
 		req.getSession().setAttribute("AuthenticatedAdmin","");
 		req.getSession().setAttribute("AuthenticatedUser","");
-		req.getSession().setAttribute("accountType","");
+		req.getSession().setAttribute(ACCOUNTTYPE,"");
 	}
 
 	@Override
@@ -52,12 +53,12 @@ public class LoginServlet extends HttpServlet {
 			RoleType roleType=userService.findUserRole(user.getUsername());
 			if(roleType==RoleType.ADMINISTRATOR) {
 				req.getSession().setAttribute("AuthenticatedAdmin",user);
-				req.getSession().setAttribute("accountType", "Administrator");
+				req.getSession().setAttribute(ACCOUNTTYPE, "Administrator");
 				dispatch("roomschedule.jsp", req, res);
 			}
 			else if(roleType==RoleType.USER){
 				req.getSession().setAttribute("AuthenticatedUser",user);
-				req.getSession().setAttribute("accountType", "User");
+				req.getSession().setAttribute(ACCOUNTTYPE, "User");
 				dispatch("roomschedule.jsp", req, res);
 			}else {
 				dispatch("error.jsp", req, res);

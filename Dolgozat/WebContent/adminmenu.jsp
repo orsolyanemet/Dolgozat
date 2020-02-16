@@ -41,21 +41,23 @@
 					class="fas fa-list"></i>List rooms</a> <a class="dropdown-item"
 					href="addroom.jsp"><i class="fas fa-plus-circle"></i>Add room</a> <a
 					class="dropdown-item" href="editroom.jsp"><i
-					class="fas fa-edit"></i>Edit room</a> <a class="dropdown-item"
+					class="fas fa-edit"></i>Edit room</a> <a
+					class="dropdown-item" href="editattributesofroom.jsp"><i
+					class="fas fa-pen"></i>Edit room attributes</a> <a class="dropdown-item"
 					href="deleteroom.jsp"><i class="fas fa-trash"></i>Delete room</a>
 			</div></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbarDropdown" data-toggle="dropdown"><i
 				class="fas fa-clipboard-list"></i> Room attributes </a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="listroomtypes.jsp"><i
-					class="fas fa-list"></i>List room attributes</a> <a
-					class="dropdown-item" href="addroomtype.jsp"><i
-					class="fas fa-plus-circle"></i>Add room attribute</a> <a
-					class="dropdown-item" href="editroomtype.jsp"><i
-					class="fas fa-edit"></i>Edit room attribute</a> <a
-					class="dropdown-item" href="deleteroomtype.jsp"><i
-					class="fas fa-trash"></i>Delete room attribute</a>
+				<a class="dropdown-item" href="listattributes.jsp"><i
+					class="fas fa-list"></i>List attributes</a> <a
+					class="dropdown-item" href="addattribute.jsp"><i
+					class="fas fa-plus-circle"></i>Add attribute</a> <a
+					class="dropdown-item" href="editattribute.jsp"><i
+					class="fas fa-edit"></i>Edit attribute</a> <a
+					class="dropdown-item" href="deleteattribute.jsp"><i
+					class="fas fa-trash"></i>Delete attribute</a>
 			</div></li>
 	</ul>
 	<ul class="navbar-nav ">

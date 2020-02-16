@@ -23,9 +23,9 @@ public class RoomService {
 		roomDAO = daoFactory.getRoomDAO();
 	}
 
-	public Room createRoom(Room room) {
+	public void createRoom(Room room) {
 		try {
-			return roomDAO.createRoom(room);
+			roomDAO.createRoom(room);
 		} catch (DAOException e) {
 			throw new ServiceException("Insert room failed.");
 		}
@@ -39,9 +39,17 @@ public class RoomService {
 		}
 	}
 
-	public void updateRoom(Room room) {
+	public Room findRoom(String roomName, String location) {
 		try {
-			roomDAO.updateRoom(room);
+			return roomDAO.findRoom(roomName, location);
+		} catch (DAOException e) {
+			throw new ServiceException("Finding room failed.");
+		}
+	}
+
+	public boolean updateRoom(Room room) {
+		try {
+			return roomDAO.updateRoom(room);
 		} catch (DAOException e) {
 			throw new ServiceException("Update room failed.");
 		}
@@ -63,4 +71,3 @@ public class RoomService {
 		}
 	}
 }
-

@@ -13,11 +13,15 @@ import ro.edu.ubb.entity.Room;
 public interface RoomDAO {
 	List<Room> getAllRooms();
 
-	Room createRoom(Room roomType);
+	void createRoom(Room room);
+	
+	Room findById(String idRoom);
+	
+	Room findRoom(String roomName, String location);
 
 	String createCheck(Room room);
 
-	void updateRoom(Room room);
+	boolean updateRoom(Room room);
 
 	boolean deleteRoom(String idRoom);
 }

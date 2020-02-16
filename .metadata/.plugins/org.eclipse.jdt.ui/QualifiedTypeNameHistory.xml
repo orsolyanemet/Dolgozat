@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="java.util.Properties"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.mongodb.client.MongoCollection"/>
 <fullyQualifiedTypeName name="com.mongodb.client.MongoClient"/>
 <fullyQualifiedTypeName name="com.mongodb.MongoClient"/>
@@ -29,17 +28,21 @@
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.RequestDAO"/>
-<fullyQualifiedTypeName name="ro.edu.ubb.entity.Room"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.entity.User"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.RoomTypeDAO"/>
-<fullyQualifiedTypeName name="ro.edu.ubb.entity.RoomType"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.common.dao.RoomDAO"/>
 <fullyQualifiedTypeName name="com.mongodb.client.result.DeleteResult"/>
-<fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.util.SecureData"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="com.mongodb.client.result.UpdateResult"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.entity.Room"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.entity.RoomType"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.service.RoomService"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.service.RoomTypeService"/>
+<fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
 </qualifiedTypeNameHistroy>

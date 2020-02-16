@@ -28,13 +28,12 @@ public class DeleteRequestServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private UserService userService=new UserService();
-	private RequestService requestService=new RequestService();
+	private static UserService userService=new UserService();
+	private static RequestService requestService=new RequestService();
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		RoleType roleType=userService.findUserRole(req.getSession().getAttribute("loggedUsername").toString());
-		System.out.println(roleType);
 		if(roleType==RoleType.ADMINISTRATOR) {
 			dispatch("deleterequest.jsp", req, res);
 		}

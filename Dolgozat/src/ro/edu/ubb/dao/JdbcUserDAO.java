@@ -11,7 +11,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.result.UpdateResult;
 
 import ro.edu.ubb.common.dao.UserDAO;
 import ro.edu.ubb.entity.RoleType;
@@ -28,7 +27,11 @@ import ro.edu.ubb.util.SecureData;
 public class JdbcUserDAO implements UserDAO {
 
 	private static final String USERNAME = "username";
+	private static final String FIRSTNAME = "firstName";
+	private static final String LASTNAME = "lastName";
+	private static final String EMAIL = "email";
 	private static final String ROLETYPE = "roleType";
+	private static final String PDUSER = "pdUser";
 	private MongoClient connection;
 	private MongoCollection<Document> collection;
 
@@ -46,10 +49,10 @@ public class JdbcUserDAO implements UserDAO {
 			if (userFromDB.getString(ROLETYPE).equals("USER")) {
 				User user = new User();
 				user.setIdUser(userFromDB.getObjectId("_id").toString());
-				user.setUsername(userFromDB.getString("username"));
-				user.setFirstName(userFromDB.getString("firstName"));
-				user.setLastName(userFromDB.getString("lastName"));
-				user.setEmail(userFromDB.getString("email"));
+				user.setUsername(userFromDB.getString(USERNAME));
+				user.setFirstName(userFromDB.getString(FIRSTNAME));
+				user.setLastName(userFromDB.getString(LASTNAME));
+				user.setEmail(userFromDB.getString(EMAIL));
 				users.add(user);
 			}
 		}
@@ -64,10 +67,10 @@ public class JdbcUserDAO implements UserDAO {
 		if (document.first() != null) {
 			User user = new User();
 			user.setIdUser(idUser);
-			user.setUsername(document.first().getString("username"));
-			user.setFirstName(document.first().getString("firstName"));
-			user.setLastName(document.first().getString("lastName"));
-			user.setEmail(document.first().getString("email"));
+			user.setUsername(document.first().getString(USERNAME));
+			user.setFirstName(document.first().getString(FIRSTNAME));
+			user.setLastName(document.first().getString(LASTNAME));
+			user.setEmail(document.first().getString(EMAIL));
 			user.setRoleType(RoleType.valueOf((document.first().get(ROLETYPE)).toString()));
 			return user;
 		}
@@ -82,9 +85,9 @@ public class JdbcUserDAO implements UserDAO {
 		if (document.first() != null) {
 			User user = new User();
 			user.setUsername(username);
-			user.setFirstName(document.first().getString("firstName"));
-			user.setLastName(document.first().getString("lastName"));
-			user.setEmail(document.first().getString("email"));
+			user.setFirstName(document.first().getString(FIRSTNAME));
+			user.setLastName(document.first().getString(LASTNAME));
+			user.setEmail(document.first().getString(EMAIL));
 			user.setRoleType(RoleType.valueOf((document.first().get(ROLETYPE)).toString()));
 			return user;
 		}
@@ -94,14 +97,14 @@ public class JdbcUserDAO implements UserDAO {
 	@Override
 	public User findByEmail(String email) {
 		BasicDBObject whereQuery = new BasicDBObject();
-		whereQuery.put("email", email);
+		whereQuery.put(EMAIL, email);
 		FindIterable<Document> document = collection.find(whereQuery);
 		if (document.first() != null) {
 			User user = new User();
 			user.setEmail(email);
-			user.setFirstName(document.first().getString("firstName"));
-			user.setLastName(document.first().getString("lastName"));
-			user.setUsername(document.first().getString("username"));
+			user.setFirstName(document.first().getString(FIRSTNAME));
+			user.setLastName(document.first().getString(LASTNAME));
+			user.setUsername(document.first().getString(USERNAME));
 			user.setRoleType(RoleType.valueOf((document.first().get(ROLETYPE)).toString()));
 			return user;
 		}
@@ -119,19 +122,17 @@ public class JdbcUserDAO implements UserDAO {
 	@Override
 	public void createUser(User user) {
 		Document addUser = new Document("_id", new ObjectId());
-		addUser.append(USERNAME, user.getUsername()).append("firstName", user.getFirstName())
-				.append("lastName", user.getLastName()).append("email", user.getEmail())
-				.append("pdUser", SecureData.convertHexToString(SecureData.hashPassword(user.getPdUser())))
-				.append("roleType", user.getRoleType().toString());
+		addUser.append(USERNAME, user.getUsername()).append(FIRSTNAME, user.getFirstName())
+				.append(LASTNAME, user.getLastName()).append(EMAIL, user.getEmail())
+				.append(PDUSER, SecureData.convertHexToString(SecureData.hashPassword(user.getPdUser())))
+				.append(ROLETYPE, user.getRoleType().toString());
 		collection.insertOne(addUser);
 	}
 
 	@Override
 	public String createCheck(User user) {
 		createUser(user);
-		User created = new User();
-		created = findByUsername(user.getUsername());
-		if (created != null) {
+		if (findByUsername(user.getUsername())!= null) {
 			return "OK";
 		}
 		return "NULL";
@@ -147,7 +148,7 @@ public class JdbcUserDAO implements UserDAO {
 		return collection
 		.updateOne(Filters.eq("_id", new ObjectId(user.getIdUser())),
 				new Document("$set",
-						new Document("lastName",user.getLastName()).append("email", user.getEmail()))).getModifiedCount()==1;
+						new Document(LASTNAME,user.getLastName()).append(EMAIL, user.getEmail()))).getModifiedCount()==1;
 		}
 	}
 
@@ -172,13 +173,13 @@ public class JdbcUserDAO implements UserDAO {
 			user.setRoleType(RoleType.valueOf((document.first().get(ROLETYPE).toString())));
 			if (user.getRoleType().equals(RoleType.ADMINISTRATOR)) {
 				return collection.find(
-						Filters.and(Filters.eq(USERNAME, user.getUsername()), Filters.eq("pdUser", user.getPdUser())))
+						Filters.and(Filters.eq(USERNAME, user.getUsername()), Filters.eq(PDUSER, user.getPdUser())))
 						.first() != null;
 			} else {
 				if (user.getRoleType().equals(RoleType.USER)) {
 					return collection
 							.find(Filters.and(Filters.eq(USERNAME, user.getUsername()),
-									Filters.eq("pdUser",
+									Filters.eq(PDUSER,
 											SecureData.convertHexToString(SecureData.hashPassword(user.getPdUser())))))
 							.first() != null;
 				}
@@ -192,12 +193,12 @@ public class JdbcUserDAO implements UserDAO {
 		BasicDBObject whereQuery = new BasicDBObject();
 		whereQuery.put(USERNAME, username);
 		FindIterable<Document> document = collection.find(whereQuery);
-		String pdUser = document.first().get("pdUser").toString();
+		String pdUser = document.first().get(PDUSER).toString();
 		if (pdUser.equals(SecureData.convertHexToString(SecureData.hashPassword(currentPd)))) {
 			return collection
 					.updateOne(Filters.eq(USERNAME, username),
 							new Document("$set",
-									new Document("pdUser",
+									new Document(PDUSER,
 											SecureData.convertHexToString(SecureData.hashPassword(newPd)))))
 					.getModifiedCount() == 1;
 		}

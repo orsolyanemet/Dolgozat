@@ -1,5 +1,7 @@
+/**
+ * @author Nemet Orsolya
+ */
 $(document).ready(function() {
-    var activeSystemClass = $('.list-group-item.active');
     $('#system-search').keyup( function() {
        var that = this;
         var tableBody = $('.table-list-search tbody');

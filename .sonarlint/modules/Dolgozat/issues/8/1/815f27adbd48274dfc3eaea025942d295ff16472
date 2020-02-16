@@ -1,7 +1,3 @@
 
-ksquid:S1135K"2Complete the task associated to this TODO comment.(ป ๆÿÿÿÿÿ8พๅัวý-HฏýRINFOZ
-CODE_SMELL
-ksquid:S1135E"2Complete the task associated to this TODO comment.(ป ๆÿÿÿÿÿ8พๅัวý-HฐýRINFOZ
-CODE_SMELL
-ksquid:S1135Q"2Complete the task associated to this TODO comment.(ป ๆÿÿÿÿÿ8พๅัวý-HฑýRINFOZ
+squid:UselessImportCheck"?Remove this unused import 'ro.edu.ubb.service.RoomTypeService'.(า๗ตหþÿÿÿÿ8ๆฏü.H…RMINORZ
 CODE_SMELL
