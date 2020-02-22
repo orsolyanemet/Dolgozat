@@ -1,3 +1,5 @@
 
-†squid:UselessImportCheck"?Remove this unused import 'ro.edu.ubb.service.RoomTypeService'.(Ò÷µËşÿÿÿÿ8æ¯ü„.H…™RMINORZ
+†squid:UselessImportCheck"?Remove this unused import 'ro.edu.ubb.service.RoomTypeService'.(Ò÷µËşÿÿÿÿ8Ûå£î†.Hå RMINORZ
+CODE_SMELL
+squid:CommentedOutCodeLineØ"<This block of commented-out lines of code should be removed.(ŒË‘Ä8œ òõ†.Hæ¤RMAJORZ
 CODE_SMELL

@@ -177,3 +177,21 @@ I
 WebContent/js/roomedit.js,9\b\9bf6813df8857ef2124fea86249ee4d0853e18f5
 N
 WebContent/deleteattribute.jsp,f\b\fb3f1ecf84e9a5d223b063d1fbd856507010aedc
+K
+WebContent/addattribute.jsp,5\c\5c5a4e9dac23cfd40834f3975d27c1c9d022cfad
+M
+WebContent/js/addattribute.js,f\b\fb6fb80a9d735ca3900287ed07980d76454c4758
+^
+.src/ro/edu/ubb/servlet/AddRoomTypeServlet.java,f\d\fd8861ab7a889474169a0392ccb32b75e517b581
+P
+ WebContent/editroomattribute.jsp,6\1\61c369fe28c18995be64c9da0aaebb7efaa339c6
+R
+"WebContent/js/editroomattribute.js,9\3\936dd4173d4d41d68001ef7ba8a065afaabadd4f
+d
+4src/ro/edu/ubb/servlet/EditRoomAttributeServlet.java,0\7\077bcb612224b76d9ab71864b7eef67794e757c6
+L
+WebContent/editattribute.jsp,b\0\b07fc74a66c5b7ec482ca6fd36b749d09af452c8
+`
+0src/ro/edu/ubb/servlet/EditAttributeServlet.java,3\4\34d6d91841f02d89fa4eee33451ff9b7179aa8ca
+N
+WebContent/js/editattribute.js,c\2\c2c2d52edb27cce88f6f57b314f119140c9eabb0

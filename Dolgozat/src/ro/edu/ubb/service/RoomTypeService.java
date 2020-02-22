@@ -6,6 +6,7 @@ import ro.edu.ubb.common.dao.DAOFactory;
 import ro.edu.ubb.common.dao.RoomTypeDAO;
 import ro.edu.ubb.dao.DAOException;
 import ro.edu.ubb.entity.RoomType;
+import ro.edu.ubb.entity.User;
 
 /**
  * Service for room type.
@@ -22,10 +23,18 @@ public class RoomTypeService {
 		daoFactory = DAOFactory.getInstance();
 		roomTypeDAO = daoFactory.getRoomTypeDAO();
 	}
-
-	public RoomType createRoomType(RoomType roomType) {
+	
+	public RoomType findRoomTypeByName(String roomTypeName) {
 		try {
-			return roomTypeDAO.createRoomType(roomType);
+			return roomTypeDAO.findRoomTypeByName(roomTypeName);
+		} catch (DAOException e) {
+			throw new ServiceException("Finding room type by name failed.");
+		}
+	}
+
+	public void createRoomType(RoomType roomType) {
+		try {
+			roomTypeDAO.createRoomType(roomType);
 		} catch (DAOException e) {
 			throw new ServiceException("Insert room type failed.");
 		}
@@ -39,9 +48,9 @@ public class RoomTypeService {
 		}
 	}
 
-	public void updateRoomType(RoomType roomType) {
+	public boolean updateRoomType(RoomType roomType) {
 		try {
-			roomTypeDAO.updateRoomType(roomType);
+			return roomTypeDAO.updateRoomType(roomType);
 		} catch (DAOException e) {
 			throw new ServiceException("Update room type failed.");
 		}

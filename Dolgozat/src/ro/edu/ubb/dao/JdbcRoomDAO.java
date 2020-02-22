@@ -100,13 +100,45 @@ public class JdbcRoomDAO implements RoomDAO {
 		}
 		return null;
 	}
+	
+	@Override
+	public Room findRoomByName(String roomName) {
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put(ROOMNAME, roomName);
+		FindIterable<Document> document = collection.find(whereQuery);
+		if (document.first() != null) {
+			Room room = new Room();
+			room.setIdRoom(document.first().get("_id").toString());
+			room.setRoomName(roomName);
+			room.setLocation(document.first().getString(LOCATION));
+			List<RoomType> roomTypeList = new ArrayList<>();
+			List<ObjectId> roomTypesToFromDB = (List<ObjectId>) document.first().get(ROOMTYPELIST);
+			if (roomTypesToFromDB != null) {
+				for (ObjectId roomType : roomTypesToFromDB) {
+					MongoCollection<Document> roomTypeCollection = MongoConnectionManager
+							.getCollection(MongoConnectionManager.getDatabase(connection), ROOMTYPE);
+					BasicDBObject query = new BasicDBObject();
+					query.put("_id", roomType);
+					FindIterable<Document> doc = roomTypeCollection.find(query);
+					RoomType typeRoom = new RoomType();
+					typeRoom.setIdRoomType(roomType.toString());
+					typeRoom.setRoomTypeName(doc.first().get(ROOMTYPENAME).toString());
+					roomTypeList.add(typeRoom);
+				}
+			}
+			room.setRoomTypeList(roomTypeList);
+			return room;
+		}
+		return null;
+	}
 
 	@Override
 	public void createRoom(Room room) {
-		List<ObjectId> roomTypeList=new ArrayList<>();
-		JdbcRoomTypeDAO roomTypeDAO=new JdbcRoomTypeDAO();
-		for(int i=0;i<room.getRoomTypeList().size();i++) {
-			roomTypeList.add(new ObjectId(roomTypeDAO.findRoomTypeByName(room.getRoomTypeList().get(i).getRoomTypeName()).getIdRoomType()));
+		List<ObjectId> roomTypeList = new ArrayList<>();
+		JdbcRoomTypeDAO roomTypeDAO = new JdbcRoomTypeDAO();
+		for (int i = 0; i < room.getRoomTypeList().size(); i++) {
+			roomTypeList.add(new ObjectId(
+					roomTypeDAO.findRoomTypeByName(room.getRoomTypeList().get(i).getRoomTypeName()).getIdRoomType()));
 		}
 		Document addRoom = new Document("_id", new ObjectId());
 		addRoom.append(ROOMNAME, room.getRoomName()).append(LOCATION, room.getLocation()).append(ROOMTYPELIST,
@@ -179,6 +211,41 @@ public class JdbcRoomDAO implements RoomDAO {
 			return room;
 		}
 		return null;
+	}
+
+	/*public List<ObjectId> findIdsOfAttributes(List<RoomType> attributes) {
+		List<ObjectId> roomAttributes = new ArrayList<>();
+		MongoCollection<Document> roomTypeCollection = MongoConnectionManager
+				.getCollection(MongoConnectionManager.getDatabase(connection), ROOMTYPE);
+		for (RoomType roomType : attributes) {
+			BasicDBObject query = new BasicDBObject();
+			query.put("roomTypeName", roomType.getRoomTypeName());
+			FindIterable<Document> doc = roomTypeCollection.find(query);
+			roomAttributes.add((ObjectId) doc.first().get("_id"));
+		}
+		return roomAttributes;
+	}
+	
+	public List<String> getRoomTypeNames(List<RoomType> roomTypes){
+		List<String> roomTypeNames=new ArrayList<>();
+		for(RoomType roomType: roomTypes) {
+			roomTypeNames.add(findRoomTypeByName(roomType.getRoomTypeName()).getRoomTypeName());
+		}
+		return roomTypeNames;
+	}*/
+
+	@Override
+	public boolean updateRoomAttribute(Room room) {
+		JdbcRoomTypeDAO roomTypeDAO=new JdbcRoomTypeDAO();
+		List<ObjectId> roomAttributes = roomTypeDAO.findIdsOfAttributes(room.getRoomTypeList());
+		List<String> currentRoomAttributes= roomTypeDAO.getRoomTypeNames(findRoomByName(room.getRoomName()).getRoomTypeList());
+		List<String> newRoomAttributes=roomTypeDAO.getRoomTypeNames(room.getRoomTypeList());
+		if (currentRoomAttributes.equals(newRoomAttributes)) {
+			return true;
+		} else {
+			return collection.updateOne(Filters.eq(ROOMNAME, room.getRoomName()),
+					new Document("$set", new Document(ROOMTYPELIST, roomAttributes))).getModifiedCount() == 1;
+		}
 	}
 
 }

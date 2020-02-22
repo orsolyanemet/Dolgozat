@@ -15,7 +15,7 @@ import ro.edu.ubb.entity.RoomType;
 public interface RoomTypeDAO {
 	List<RoomType> getAllRoomTypes();
 
-	RoomType createRoomType(RoomType roomType);
+	void createRoomType(RoomType roomType);
 	
 	RoomType findRoomTypeByName(String roomTypeName);
 	
@@ -23,7 +23,7 @@ public interface RoomTypeDAO {
 
 	String createCheck(RoomType roomType);
 
-	void updateRoomType(RoomType roomType);
+	boolean updateRoomType(RoomType roomType);
 
 	boolean deleteRoomType(String idRoomType);
 }

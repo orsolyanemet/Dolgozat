@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="console" key="selection"/>
+		<item value="split" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="split"/>
+			<item value="SYS"/>
 			<item value="console"/>
 			<item value="ott"/>
 			<item value="user"/>
@@ -21,8 +23,6 @@
 			<item value="getConnect"/>
 			<item value="sys"/>
 			<item value="syso"/>
-			<item value="rand"/>
-			<item value="getInitialPopulation"/>
 		</list>
 		<list key="replacehistory">
 		</list>

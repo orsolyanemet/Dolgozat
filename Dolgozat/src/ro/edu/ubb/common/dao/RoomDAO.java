@@ -17,11 +17,15 @@ public interface RoomDAO {
 	
 	Room findById(String idRoom);
 	
+	Room findRoomByName(String roomName);
+	
 	Room findRoom(String roomName, String location);
 
 	String createCheck(Room room);
 
 	boolean updateRoom(Room room);
+	
+	boolean updateRoomAttribute(Room room);
 
 	boolean deleteRoom(String idRoom);
 }

@@ -54,6 +54,14 @@ public class RoomService {
 			throw new ServiceException("Update room failed.");
 		}
 	}
+	
+	public boolean updateRoomAttribute(Room room) {
+		try {
+			return roomDAO.updateRoomAttribute(room);
+		} catch (DAOException e) {
+			throw new ServiceException("Update room attribute failed.");
+		}
+	}
 
 	public boolean deleteRoom(String idRoom) {
 		try {

@@ -3,6 +3,7 @@ package ro.edu.ubb.common.dao;
 import java.util.List;
 
 import ro.edu.ubb.entity.Request;
+import ro.edu.ubb.entity.Room;
 
 /**
  * DAO interface for request.

@@ -42,7 +42,7 @@
 					href="addroom.jsp"><i class="fas fa-plus-circle"></i>Add room</a> <a
 					class="dropdown-item" href="editroom.jsp"><i
 					class="fas fa-edit"></i>Edit room</a> <a
-					class="dropdown-item" href="editattributesofroom.jsp"><i
+					class="dropdown-item" href="editroomattribute.jsp"><i
 					class="fas fa-pen"></i>Edit room attributes</a> <a class="dropdown-item"
 					href="deleteroom.jsp"><i class="fas fa-trash"></i>Delete room</a>
 			</div></li>

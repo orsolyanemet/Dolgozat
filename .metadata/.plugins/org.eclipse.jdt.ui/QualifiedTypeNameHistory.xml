@@ -13,9 +13,7 @@
 <fullyQualifiedTypeName name="MongoConnectionManager"/>
 <fullyQualifiedTypeName name="com.mongodb.client.MongoDatabase"/>
 <fullyQualifiedTypeName name="com.mongodb.MongoSocketException"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
 <fullyQualifiedTypeName name="org.bson.conversions.Bson"/>
@@ -39,10 +37,13 @@
 <fullyQualifiedTypeName name="ro.edu.ubb.entity.Room"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="ro.edu.ubb.entity.RoomType"/>
-<fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="ro.edu.ubb.service.RoomService"/>
-<fullyQualifiedTypeName name="ro.edu.ubb.service.RoomTypeService"/>
 <fullyQualifiedTypeName name="org.bson.types.ObjectId"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.entity.RoomType"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.service.RoomTypeService"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="ro.edu.ubb.dao.JdbcRoomTypeDAO"/>
 </qualifiedTypeNameHistroy>
